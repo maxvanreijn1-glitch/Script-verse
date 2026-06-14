@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Screenplays — J. Mercer</title>
-  <meta name="description" content="Screenplays by J. Mercer, with draft-by-draft progression from first idea to final script.">
+  <title>Screenplays — Jack Dempsey</title>
+  <meta name="description" content="Screenplays by Jack Dempsey, with draft-by-draft progression from first idea to final script.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <style>
@@ -135,11 +135,10 @@
 <!-- NAV -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav__inner">
-    <a href="index.html" class="nav__logo">J. Mercer</a>
+    <a href="index.html" class="nav__logo">Jack Dempsey</a>
     <ul class="nav__links">
       <li><a href="index.html">Home</a></li>
       <li><a href="screenplays.html">Screenplays</a></li>
-      <li><a href="films.html">Films</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -155,7 +154,7 @@
   <div class="page-hero">
     <p class="eyebrow page-hero__eyebrow">The work</p>
     <h1 class="page-hero__title">Screen<em>plays</em></h1>
-    <p class="page-hero__sub">Every script below shows its full journey — first draft to final. Drag the timeline to move between versions and see how each story found itself.</p>
+    <p class="page-hero__sub">Every script below shows its full journey, first draft to final. Drag the timeline to move between versions and see how each story develops.</p>
   </div>
 
   <!-- FILTERS -->
@@ -164,22 +163,22 @@
     <button class="filter-btn" onclick="filterScripts('feature', this)">Feature</button>
     <button class="filter-btn" onclick="filterScripts('short', this)">Short</button>
     <button class="filter-btn" onclick="filterScripts('drama', this)">Drama</button>
-    <button class="filter-btn" onclick="filterScripts('documentary', this)">Documentary</button>
+    <button class="filter-btn" onclick="filterScripts('coming-of-age', this)">Coming of Age</button>
   </div>
 
   <!-- ═══════════════════════════════════════
-       SCREENPLAY 1 — The Fog at Hartley
+       SCREENPLAY 1 — The Ostritch
   ═══════════════════════════════════════ -->
-  <article class="card screenplay-card" data-genre="drama" data-type="feature">
+  <article class="card screenplay-card" data-genre="coming-of-age" data-type="short">
     <div class="screenplay-card__header">
       <div>
-        <h2 class="screenplay-card__title">The Fog at Hartley</h2>
-        <p class="screenplay-card__meta">Drama · Feature · 4 drafts</p>
+        <h2 class="screenplay-card__title">The Ostritch</h2>
+        <p class="screenplay-card__meta">Coming of age · Short · 1 current draft</p>
       </div>
       <span class="screenplay-card__draft-badge" id="badge-fog">Draft 1</span>
     </div>
 
-    <p class="screenplay-card__synopsis">Eleanor hasn't left the farmhouse in six years. When her estranged son arrives unannounced, the coastal fog that's been creeping in each morning suddenly has company. A slow-burn drama about memory, inheritance, and the things we leave unsaid until it's almost too late.</p>
+    <p class="screenplay-card__synopsis">A group of friends begin to realise the cost of growing up as they come to terms with the fact that — on their final day of school — they may not always be together.</p>
 
     <!-- FILMSTRIP TIMELINE -->
     <div class="filmstrip-wrap">
@@ -189,31 +188,18 @@
         <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-fog" style="width:0%"></div></div>
         <div class="filmstrip-hole"></div>
       </div>
-      <input type="range" class="draft-slider" id="slider-fog" min="1" max="4" value="1" step="1" aria-label="Select draft">
+      <input type="range" class="draft-slider" id="slider-fog" min="1" max="1" value="1" step="1" aria-label="Select draft">
       <div class="draft-nodes">
         <div class="draft-node" role="button" tabindex="0" aria-label="Draft 1">
           <div class="draft-node__dot is-active" id="dot-fog-1"></div>
           <span class="draft-node__label">Draft 1</span>
         </div>
-        <div class="draft-node" role="button" tabindex="0" aria-label="Draft 2">
-          <div class="draft-node__dot" id="dot-fog-2"></div>
-          <span class="draft-node__label">Draft 2</span>
-        </div>
-        <div class="draft-node" role="button" tabindex="0" aria-label="Draft 3">
-          <div class="draft-node__dot" id="dot-fog-3"></div>
-          <span class="draft-node__label">Draft 3</span>
-        </div>
-        <div class="draft-node" role="button" tabindex="0" aria-label="Final draft">
-          <div class="draft-node__dot" id="dot-fog-4"></div>
-          <span class="draft-node__label">Final</span>
-        </div>
       </div>
     </div>
 
-    <!-- DRAFT NOTES (changes per draft) -->
     <div class="draft-notes" id="notes-fog">
-      <strong>Draft 1 — Jan 2024</strong>
-      First pass. Getting the story on paper. Eleanor's voice is rough but present. The fog is too literal — needs to earn its metaphor.
+      <strong>Draft 1 — Jun 2026</strong>
+      First pass. Getting the story on paper. There is a clear start and finish however more needs to take place in the middle.
     </div>
 
     <div class="screenplay-card__content" id="content-fog">INT. FARMHOUSE KITCHEN - MORNING
@@ -228,9 +214,9 @@ She pours tea, hands shaking slightly.
     </div>
 
     <div class="screenplay-card__footer">
-      <span class="screenplay-card__stat" id="stat-fog">89 pages · Jan 2024</span>
+      <span class="screenplay-card__stat" id="stat-fog">In progress · Jun 2026</span>
       <div style="display:flex; gap:10px;">
-        <a href="pages/fog-at-hartley-draft1.pdf" class="btn btn--ghost" download>
+        <a href="pages/the-ostritch-draft1.pdf" class="btn btn--ghost" download>
           <i class="ti ti-download" aria-hidden="true"></i> Download draft
         </a>
         <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
@@ -240,131 +226,168 @@ She pours tea, hands shaking slightly.
 
 
   <!-- ═══════════════════════════════════════
-       SCREENPLAY 2 — Saltburn Road
+       SCREENPLAY 2 — The Spiral
   ═══════════════════════════════════════ -->
   <article class="card screenplay-card" data-genre="drama" data-type="short">
     <div class="screenplay-card__header">
       <div>
-        <h2 class="screenplay-card__title">Saltburn Road</h2>
-        <p class="screenplay-card__meta">Drama · Short (22 min) · 3 drafts</p>
+        <h2 class="screenplay-card__title">The Spiral</h2>
+        <p class="screenplay-card__meta">Drama · Short · 1 current draft</p>
       </div>
-      <span class="screenplay-card__draft-badge" id="badge-salt">Draft 1</span>
+      <span class="screenplay-card__draft-badge" id="badge-spiral">Draft 1</span>
     </div>
 
-    <p class="screenplay-card__synopsis">A teenage girl visits her grandmother every Sunday. One morning the grandmother doesn't answer the door, and the girl must decide how long to wait on the step. A single-location short about the patience we owe each other.</p>
+    <p class="screenplay-card__synopsis">RYAN is two years clean when his girlfriend leaves him. What follows is not a relapse — not immediately — but the slow gravitational pull back towards everything he thought he'd escaped. A portrait of recovery as an ongoing act of will, and what happens when the thing holding you together walks out the door.</p>
 
     <div class="filmstrip-wrap">
       <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
       <div class="filmstrip-track">
         <div class="filmstrip-hole"></div>
-        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-salt" style="width:0%"></div></div>
+        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-spiral" style="width:0%"></div></div>
         <div class="filmstrip-hole"></div>
       </div>
-      <input type="range" class="draft-slider" id="slider-salt" min="1" max="3" value="1" step="1" aria-label="Select draft">
+      <input type="range" class="draft-slider" id="slider-spiral" min="1" max="1" value="1" step="1" aria-label="Select draft">
       <div class="draft-nodes">
         <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot is-active" id="dot-salt-1"></div>
+          <div class="draft-node__dot is-active" id="dot-spiral-1"></div>
           <span class="draft-node__label">Draft 1</span>
-        </div>
-        <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot" id="dot-salt-2"></div>
-          <span class="draft-node__label">Draft 2</span>
-        </div>
-        <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot" id="dot-salt-3"></div>
-          <span class="draft-node__label">Final</span>
         </div>
       </div>
     </div>
 
-    <div class="draft-notes" id="notes-salt">
-      <strong>Draft 1 — Mar 2023</strong>
-      Too much dialogue. The girl explains herself. She shouldn't have to.
+    <div class="draft-notes" id="notes-spiral">
+      <strong>Draft 1 — Jun 2026</strong>
+      First pass. Ryan's voice is coming through clearly. The challenge is pacing the spiral — it needs to feel gradual and inevitable at the same time. The breakup scene needs work; right now it's doing too much explaining.
     </div>
 
-    <div class="screenplay-card__content" id="content-salt">EXT. TERRACED HOUSE, FRONT STEP - MORNING
+    <div class="screenplay-card__content" id="content-spiral">INT. RYAN'S FLAT - KITCHEN - MORNING
 
-MAISIE (16) rings the doorbell a second time.
-She can hear the television through the glass.
-She knows her nan is in.
+The flat is tidy. Aggressively tidy. The kind of
+clean that takes effort every single day.
 
-She rings again. Waits.
+RYAN (29) stands at the counter eating cereal,
+standing up. He doesn't sit down for meals anymore.
+Sitting down feels like staying.
 
-She sits down on the step.
+His phone buzzes. He looks at it.
+
+He puts it face-down.
+
+He finishes his cereal. Washes the bowl.
+Dries it. Puts it away.
+
+Goes to work.
+
+                                    CUT TO:
+
+INT. RYAN'S FLAT - KITCHEN - NIGHT (THREE WEEKS LATER)
+
+The flat is not tidy.
     </div>
 
     <div class="screenplay-card__footer">
-      <span class="screenplay-card__stat" id="stat-salt">28 pages · Mar 2023</span>
+      <span class="screenplay-card__stat" id="stat-spiral">In progress · Jun 2026</span>
       <div style="display:flex; gap:10px;">
-        <a href="pages/saltburn-road-draft1.pdf" class="btn btn--ghost" download>
+        <a href="pages/the-spiral-draft1.pdf" class="btn btn--ghost" download>
           <i class="ti ti-download" aria-hidden="true"></i> Download draft
         </a>
-        <button class="btn btn--outline">Read in full</button>
+        <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
       </div>
     </div>
   </article>
 
 
   <!-- ═══════════════════════════════════════
-       SCREENPLAY 3 — Between Shifts
+       SCREENPLAY 3 — Ordinary Lives
   ═══════════════════════════════════════ -->
-  <article class="card screenplay-card" data-genre="documentary" data-type="short">
+  <article class="card screenplay-card" data-genre="drama" data-type="feature">
     <div class="screenplay-card__header">
       <div>
-        <h2 class="screenplay-card__title">Between Shifts</h2>
-        <p class="screenplay-card__meta">Documentary · Short (15 min) · 2 drafts</p>
+        <h2 class="screenplay-card__title">Ordinary Lives</h2>
+        <p class="screenplay-card__meta">Drama · Feature · 1 current draft</p>
       </div>
-      <span class="screenplay-card__draft-badge" id="badge-shift">Draft 1</span>
+      <span class="screenplay-card__draft-badge" id="badge-ord">Draft 1</span>
     </div>
 
-    <p class="screenplay-card__synopsis">Three NHS nurses. Four nights. A documentary treatment exploring the hours between the end of a shift and the beginning of sleep — what people do with the strange half-time of a life lived on rotation.</p>
+    <p class="screenplay-card__synopsis">A group of old friends keep finding themselves back in the same room — weddings, funerals, thirtieth birthdays — and slowly realising they only exist to each other now in the margins of real events. Running through the reunions is a quieter story: two of them, JAMES and CLAIRE, circling something neither of them has ever quite said out loud.</p>
 
     <div class="filmstrip-wrap">
       <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
       <div class="filmstrip-track">
         <div class="filmstrip-hole"></div>
-        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-shift" style="width:0%"></div></div>
+        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-ord" style="width:0%"></div></div>
         <div class="filmstrip-hole"></div>
       </div>
-      <input type="range" class="draft-slider" id="slider-shift" min="1" max="2" value="1" step="1" aria-label="Select draft">
+      <input type="range" class="draft-slider" id="slider-ord" min="1" max="1" value="1" step="1" aria-label="Select draft">
       <div class="draft-nodes">
         <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot is-active" id="dot-shift-1"></div>
-          <span class="draft-node__label">Treatment</span>
-        </div>
-        <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot" id="dot-shift-2"></div>
-          <span class="draft-node__label">Final</span>
+          <div class="draft-node__dot is-active" id="dot-ord-1"></div>
+          <span class="draft-node__label">Draft 1</span>
         </div>
       </div>
     </div>
 
-    <div class="draft-notes" id="notes-shift">
-      <strong>Treatment — Aug 2024</strong>
-      Initial pitch document. Structure loose — three acts map to three nurses. Tightening required once access is confirmed.
+    <div class="draft-notes" id="notes-ord">
+      <strong>Draft 1 — Jun 2026</strong>
+      First pass. The ensemble structure is working — each reunion feels distinct. James and Claire's storyline needs more room to breathe; at the moment the group scenes are crowding it out. The ending is a placeholder.
     </div>
 
-    <div class="screenplay-card__content" id="content-shift">BETWEEN SHIFTS
-A documentary treatment
+    <div class="screenplay-card__content" id="content-ord">INT. FUNCTION ROOM - EVENING
 
-The night shift ends at 07:30.
+A wedding. The kind where the speeches ran long
+and the food arrived cold and nobody minded.
 
-By 07:45 the car park is clearing.
-By 08:00, SARAH is on the A19, radio off,
-window cracked.
+The dancefloor is half-full. The bar is fully
+occupied.
 
-She won't sleep until noon.
-She doesn't know what to do with those hours.
-Neither do we. That's the film.
+JAMES (32) stands at the edge of the room with
+a drink he hasn't touched, watching the group
+he's known since he was seventeen.
+
+They're louder than they used to be.
+Or maybe he's quieter.
+
+CLAIRE (31) appears at his shoulder.
+
+CLAIRE
+You've got your thinking face on.
+
+JAMES
+I don't have a thinking face.
+
+CLAIRE
+You've had it since we were sixteen.
+It hasn't improved.
+
+A beat. They watch the dancefloor together.
+
+JAMES
+When did this become the only time
+we see each other?
+
+Claire doesn't answer straight away.
+She knew this conversation was coming.
+It comes at every wedding.
+
+CLAIRE
+Probably around the time life got in the way.
+
+JAMES
+Right.
+
+Another beat.
+
+JAMES (date: 'Jun 2026')
+And when did we decide to let it?
     </div>
 
     <div class="screenplay-card__footer">
-      <span class="screenplay-card__stat" id="stat-shift">12 pages · Aug 2024</span>
+      <span class="screenplay-card__stat" id="stat-ord">In progress · Jun 2026</span>
       <div style="display:flex; gap:10px;">
-        <a href="pages/between-shifts-treatment.pdf" class="btn btn--ghost" download>
-          <i class="ti ti-download" aria-hidden="true"></i> Download treatment
+        <a href="pages/ordinary-lives-draft1.pdf" class="btn btn--ghost" download>
+          <i class="ti ti-download" aria-hidden="true"></i> Download draft
         </a>
-        <button class="btn btn--outline">Read in full</button>
+        <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
       </div>
     </div>
   </article>
@@ -375,13 +398,13 @@ Neither do we. That's the film.
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer__inner">
-    <span class="footer__name">J. Mercer — Filmmaker</span>
+    <span class="footer__name">Jack Dempsey — Filmmaker</span>
     <ul class="footer__links">
       <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
       <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <p class="footer__copy">&copy; 2024 J. Mercer. All rights reserved.</p>
+    <p class="footer__copy">&copy; 2026 Jack Dempsey. All rights reserved.</p>
   </div>
 </footer>
 
@@ -400,163 +423,94 @@ ELEANOR
 It's here again.
 
 She pours tea, hands shaking slightly.`,
-    notes: '<strong>Draft 1 — Jan 2024</strong>\nFirst pass. Getting the story on paper. Eleanor\'s voice is rough but present. The fog is too literal — needs to earn its metaphor.',
-    pages: '89 pages', date: 'Jan 2024'
-  },
-  {
-    label: 'Draft 2',
-    text: `INT. FARMHOUSE KITCHEN - EARLY MORNING
-
-ELEANOR (68) stands at the sink. Through the
-window, a dense coastal fog swallows the garden.
-
-She has stood here before. Many mornings.
-This one feels different. She can't say why.
-
-ELEANOR
-(to herself)
-Still here.
-
-She fills the kettle. Her hands are steady now.`,
-    notes: '<strong>Draft 2 — Mar 2024</strong>\nEleanor\'s age pinned down. Cut the shaking hands — too on-the-nose. Her stillness is scarier than her trembling.',
-    pages: '94 pages', date: 'Mar 2024'
-  },
-  {
-    label: 'Draft 3',
-    text: `INT. FARMHOUSE KITCHEN - DAWN
-
-The fog is in before Eleanor is. She finds it
-pressed against the glass when she comes
-downstairs.
-
-ELEANOR stands at the window a long time
-before putting the kettle on.
-
-ELEANOR
-(quietly)
-Still here, then.
-
-A beat. She doesn't mean the fog.`,
-    notes: '<strong>Draft 3 — Jun 2024</strong>\nFlipped the opening — the fog arrives before Eleanor does. Better. The parenthetical "quietly" can probably go in the final.',
-    pages: '91 pages', date: 'Jun 2024'
-  },
-  {
-    label: 'Final Draft',
-    text: `INT. FARMHOUSE KITCHEN - DAWN
-
-The fog is already there when ELEANOR comes
-downstairs. Pressed against the glass like
-it's been waiting.
-
-She doesn't rush to the kettle. She just
-looks at it.
-
-                    ELEANOR
-          You again.
-
-The fog doesn't answer. Neither does she.
-The kettle goes on. The morning begins.
-
-                                    CUT TO:`,
-    notes: '<strong>Final Draft — Sep 2024</strong>\nDropped the parenthetical. Cut seven pages of backstory exposition in Act 2. "You again" is shorter and better than "Still here, then."',
-    pages: '88 pages', date: 'Sep 2024'
+    notes: '<strong>Draft 1 — Jun 2026</strong>\nFirst pass. Getting the story on paper. There is a clear start and finish however more needs to take place in the middle.',
+    pages: 'In progress', date: 'Jun 2026'
   }
 ];
 
-const saltDrafts = [
+const spiralDrafts = [
   {
     label: 'Draft 1',
-    text: `EXT. TERRACED HOUSE, FRONT STEP - MORNING
+    text: `INT. RYAN'S FLAT - KITCHEN - MORNING
 
-MAISIE (16) rings the doorbell a second time.
-She can hear the television through the glass.
-She knows her nan is in.
+The flat is tidy. Aggressively tidy. The kind of
+clean that takes effort every single day.
 
-She rings again. Waits.
+RYAN (29) stands at the counter eating cereal,
+standing up. He doesn't sit down for meals anymore.
+Sitting down feels like staying.
 
-She sits down on the step.`,
-    notes: '<strong>Draft 1 — Mar 2023</strong>\nToo much dialogue. The girl explains herself. She shouldn\'t have to.',
-    pages: '28 pages', date: 'Mar 2023'
-  },
-  {
-    label: 'Draft 2',
-    text: `EXT. TERRACED HOUSE, FRONT STEP - MORNING
+His phone buzzes. He looks at it.
 
-MAISIE (16) rings. Waits. Rings again.
+He puts it face-down.
 
-The television murmurs behind the glass.
+He finishes his cereal. Washes the bowl.
+Dries it. Puts it away.
 
-She tries the letterbox.
+Goes to work.
 
-MAISIE
-Nan?
+                                    CUT TO:
 
-Nothing.
+INT. RYAN'S FLAT - KITCHEN - NIGHT (THREE WEEKS LATER)
 
-She sits on the step and puts her bag
-between her feet. She's going to be
-here a while.`,
-    notes: '<strong>Draft 2 — May 2023</strong>\nLetterbox moment added — more physical, less verbal. Cut the internal monologue entirely. The bag-between-the-feet tells us she\'s committed.',
-    pages: '24 pages', date: 'May 2023'
-  },
-  {
-    label: 'Final Draft',
-    text: `EXT. TERRACED HOUSE, FRONT STEP - MORNING
-
-MAISIE (16) rings. Waits.
-
-The television is on. She can hear it.
-
-She opens the letterbox, lets it close
-quietly. Sits on the step. Puts her bag
-down between her feet.
-
-Time passes.
-
-A neighbour walks a dog. Glances.
-MAISIE looks straight ahead.`,
-    notes: '<strong>Final — Jul 2023</strong>\nRemoved her calling through the letterbox. She opens it, then decides not to say anything — that\'s more honest. The neighbour moment added in table read.',
-    pages: '22 pages', date: 'Jul 2023'
+The flat is not tidy.`,
+    notes: '<strong>Draft 1 — Jun 2026</strong>\nFirst pass. Ryan\'s voice is coming through clearly. The challenge is pacing the spiral — it needs to feel gradual and inevitable at the same time. The breakup scene needs work; right now it\'s doing too much explaining.',
+    pages: 'In progress', date: 'Jun 2026'
   }
 ];
 
-const shiftDrafts = [
+const ordDrafts = [
   {
-    label: 'Treatment',
-    text: `BETWEEN SHIFTS
-A documentary treatment
+    label: 'Draft 1',
+    text: `INT. FUNCTION ROOM - EVENING
 
-The night shift ends at 07:30.
+A wedding. The kind where the speeches ran long
+and the food arrived cold and nobody minded.
 
-By 07:45 the car park is clearing.
-By 08:00, SARAH is on the A19, radio off,
-window cracked.
+The dancefloor is half-full. The bar is fully
+occupied.
 
-She won't sleep until noon.
-She doesn't know what to do with those hours.
-Neither do we. That's the film.`,
-    notes: '<strong>Treatment — Aug 2024</strong>\nInitial pitch document. Structure loose — three acts map to three nurses. Tightening required once access is confirmed.',
-    pages: '12 pages', date: 'Aug 2024'
-  },
-  {
-    label: 'Final Script',
-    text: `BETWEEN SHIFTS
-Shooting script
+JAMES (32) stands at the edge of the room with
+a drink he hasn't touched, watching the group
+he's known since he was seventeen.
 
-STRUCTURE:
-Act 1 — Sarah (A&E, 14 years)
-         Drives home. Doesn't go in.
-         Sits in the car outside her own house.
+They're louder than they used to be.
+Or maybe he's quieter.
 
-Act 2 — Dev (Oncology, 6 years)
-         Goes to the gym. Lifts until he can't.
-         Sits in the steam room alone.
+CLAIRE (31) appears at his shoulder.
 
-Act 3 — Cath (Paeds, 22 years)
-         Walks. Just walks. The city at 8am
-         belongs to nobody and she likes that.`,
-    notes: '<strong>Final Script — Nov 2024</strong>\nThree nurses confirmed. Access granted. Cut the fourth subject — three voices is cleaner. Each act now has a defining action not a monologue.',
-    pages: '18 pages', date: 'Nov 2024'
+CLAIRE
+You've got your thinking face on.
+
+JAMES
+I don't have a thinking face.
+
+CLAIRE
+You've had it since we were sixteen.
+It hasn't improved.
+
+A beat. They watch the dancefloor together.
+
+JAMES
+When did this become the only time
+we see each other?
+
+Claire doesn't answer straight away.
+She knew this conversation was coming.
+It comes at every wedding.
+
+CLAIRE
+Probably around the time life got in the way.
+
+JAMES
+Right.
+
+Another beat.
+
+JAMES (date: 'Jun 2026')
+And when did we decide to let it?`,
+    notes: '<strong>Draft 1 — Jun 2026</strong>\nFirst pass. The ensemble structure is working, each reunion feels distinct and drives the story. Aaron and Olivia\s storyline needs more room to breathe; at the moment the group scenes are crowding it out. The ending is a placeholder.',
+    pages: 'In progress', date: 'Jun 2026'
   }
 ];
 
@@ -588,9 +542,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  initScript('fog',   fogDrafts);
-  initScript('salt',  saltDrafts);
-  initScript('shift', shiftDrafts);
+  initScript('fog',    fogDrafts);
+  initScript('spiral', spiralDrafts);
+  initScript('ord',    ordDrafts);
 });
 
 /* ── Genre filter ────────────────────────────────────── */
