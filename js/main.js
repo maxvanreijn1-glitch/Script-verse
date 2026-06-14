@@ -1,5 +1,5 @@
 /* =============================================
-   nav.js â€” active link highlighting + hamburger
+   nav.js — active link highlighting + hamburger
 ============================================= */
 (function () {
   const page = location.pathname.split('/').pop() || 'index.html';
@@ -15,7 +15,7 @@
 })();
 
 /* =============================================
-   filmstrip.js â€” draft timeline sliders
+   filmstrip.js — draft timeline sliders
 ============================================= */
 function initFilmstrip(config) {
   /*
@@ -25,7 +25,7 @@ function initFilmstrip(config) {
       badgeId:  'badge-fog',
       statId:   'stat-fog',
       contentId:'content-fog',
-      dotPrefix:'dot-fog-',     // dots are dot-fog-1 â€¦ dot-fog-N
+      dotPrefix:'dot-fog-',     // dots are dot-fog-1 … dot-fog-N
       drafts: [
         { label:'Draft 1', text:'...', pages:'89 pages', date:'Jan 2024' },
         ...
@@ -44,7 +44,7 @@ function initFilmstrip(config) {
   function render(n) {
     const d = config.drafts[n - 1];
     if (content) content.textContent = d.text;
-    if (stat)    stat.textContent    = `${d.pages} Â· ${d.date}`;
+    if (stat)    stat.textContent    = `${d.pages} · ${d.date}`;
     if (badge)   badge.textContent   = d.label;
     if (fill)    fill.style.width    = `${((n - 1) / Math.max(total - 1, 1)) * 100}%`;
 
@@ -74,7 +74,7 @@ function initFilmstrip(config) {
 }
 
 /* =============================================
-   modal.js â€” video modal
+   modal.js — video modal
 ============================================= */
 function openVideoModal(src, type) {
   /* type: 'youtube' | 'vimeo' | 'local' */
