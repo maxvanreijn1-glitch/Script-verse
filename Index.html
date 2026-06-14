@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J. Mercer — Filmmaker</title>
+  <meta name="description" content="Independent filmmaker and screenwriter based in Newcastle. Drama, documentary, short film.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .hero__eyebrow { margin-bottom: 22px; }
+    .hero__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 62px;
+      font-weight: 400;
+      line-height: 1.07;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hero__title em { font-style: italic; color: var(--amber); }
+    .hero__sub {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--ink-light);
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+    .hero__cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero__stats {
+      display: flex;
+      gap: 40px;
+      padding: 36px 0 0;
+      margin-top: 40px;
+      border-top: 1px solid var(--divider);
+      flex-wrap: wrap;
+    }
+    .hero__stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .hero__stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 5px;
+    }
+
+    /* ── Featured Films ── */
+    .featured { padding: 72px 0; border-bottom: 1px solid var(--divider); }
+
+    .films-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .film-card { cursor: pointer; }
+    .film-card__info { padding: 16px 18px 18px; }
+    .film-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .film-card__desc {
+      font-size: 13px;
+      color: var(--ink-light);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .film-card__meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    /* ── Latest Screenplay ── */
+    .latest { padding: 72px 0; border-bottom: 1px solid var(--divider); }
+
+    .screenplay-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .screenplay-preview__text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .screenplay-preview__text .genre {
+      font-size: 12px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 16px;
+    }
+    .screenplay-preview__text p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink-light);
+      margin-bottom: 24px;
+    }
+    .screenplay-excerpt {
+      background: var(--parchment);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+      padding: 24px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--ink);
+      white-space: pre-wrap;
+    }
+
+    /* ── Festivals ── */
+    .festivals { padding: 72px 0; }
+
+    .festivals-list { }
+    .festival-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--divider);
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .festival-row__left { display: flex; align-items: center; gap: 16px; }
+    .festival-row__year {
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      color: var(--ink-faint);
+      width: 36px;
+      flex-shrink: 0;
+    }
+    .festival-row__name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .festival-row__award {
+      font-size: 13px;
+      color: var(--ink-light);
+    }
+
+    @media (max-width: 640px) {
+      .hero__title { font-size: 40px; }
+      .screenplay-preview { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">J. Mercer</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="screenplays.html">Screenplays</a></li>
+      <li><a href="films.html">Films</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<main>
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow hero__eyebrow">Writer · Director · Newcastle</p>
+    <h1 class="hero__title">Stories told<br>frame by <em>frame.</em></h1>
+    <p class="hero__sub">Independent filmmaker working across drama and documentary. Every script begins as a rough sketch and earns its way to the screen through revision, honesty, and stubbornness.</p>
+    <div class="hero__cta">
+      <a href="screenplays.html" class="btn btn--solid">View screenplays</a>
+      <a href="films.html" class="btn btn--outline">Watch films</a>
+    </div>
+    <div class="hero__stats">
+      <div>
+        <div class="hero__stat-num">6</div>
+        <div class="hero__stat-label">Screenplays</div>
+      </div>
+      <div>
+        <div class="hero__stat-num">4</div>
+        <div class="hero__stat-label">Short films</div>
+      </div>
+      <div>
+        <div class="hero__stat-num">3</div>
+        <div class="hero__stat-label">Festival selections</div>
+      </div>
+      <div>
+        <div class="hero__stat-num">7+</div>
+        <div class="hero__stat-label">Years writing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED FILMS -->
+<section class="featured">
+  <div class="container">
+    <div class="section-rule">Featured films</div>
+    <div class="films-grid">
+
+      <article class="card film-card" onclick="openVideoModal('https://vimeo.com/YOUR_VIDEO_ID', 'vimeo')" role="button" tabindex="0" aria-label="Watch Before the Tide">
+        <div class="film-thumb" style="background: #1a1410;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-wave-sine" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">12:34</span>
+        </div>
+        <div class="film-card__info">
+          <h3 class="film-card__title">Before the Tide</h3>
+          <p class="film-card__desc">A fisherman returns to his coastal village after thirty years away to settle his father's affairs.</p>
+          <div class="film-card__meta">
+            <span class="tag">Drama</span>
+            <span class="tag">Vimeo</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2023</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card film-card" onclick="openVideoModal('https://youtube.com/watch?v=YOUR_VIDEO_ID', 'youtube')" role="button" tabindex="0" aria-label="Watch Room 4B">
+        <div class="film-thumb" style="background: #141820;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">8:17</span>
+        </div>
+        <div class="film-card__info">
+          <h3 class="film-card__title">Room 4B</h3>
+          <p class="film-card__desc">Two strangers share a waiting room and discover their lives are more entangled than they knew.</p>
+          <div class="film-card__meta">
+            <span class="tag">Drama</span>
+            <span class="tag">YouTube</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2022</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card film-card" onclick="openVideoModal('https://vimeo.com/YOUR_VIDEO_ID_2', 'vimeo')" role="button" tabindex="0" aria-label="Watch The Estate">
+        <div class="film-thumb" style="background: #181410;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-trees" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">18:02</span>
+        </div>
+        <div class="film-card__info">
+          <h3 class="film-card__title">The Estate</h3>
+          <p class="film-card__desc">A documentary portrait of the last working farm on the Northumberland coast.</p>
+          <div class="film-card__meta">
+            <span class="tag">Documentary</span>
+            <span class="tag">Vimeo</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2024</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div style="margin-top:32px; text-align:center;">
+      <a href="films.html" class="btn btn--outline">All films <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST SCREENPLAY PREVIEW -->
+<section class="latest">
+  <div class="container">
+    <div class="section-rule">Latest screenplay</div>
+    <div class="screenplay-preview">
+      <div class="screenplay-preview__text">
+        <h2>The Fog at Hartley</h2>
+        <p class="genre">Drama · Feature · 88 pages</p>
+        <p>Eleanor hasn't left the farmhouse in six years. When her estranged son arrives unannounced, the coastal fog that's been creeping in each morning suddenly has company.</p>
+        <p>A slow-burn drama about memory, inheritance, and the things we leave unsaid until it's almost too late.</p>
+        <a href="screenplays.html" class="btn btn--outline">Read drafts <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="screenplay-excerpt" aria-label="Screenplay excerpt">INT. FARMHOUSE KITCHEN - DAWN
+
+The fog is already there when ELEANOR
+comes downstairs. Pressed against the
+glass like it's been waiting.
+
+She doesn't rush to the kettle.
+She just looks at it.
+
+          ELEANOR
+You again.
+
+The fog doesn't answer. Neither does
+she. The kettle goes on. The morning
+begins.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FESTIVAL CREDITS -->
+<section class="festivals">
+  <div class="container">
+    <div class="section-rule">Recognition</div>
+    <div class="festivals-list" role="list">
+      <div class="festival-row" role="listitem">
+        <div class="festival-row__left">
+          <span class="festival-row__year">2024</span>
+          <span class="festival-row__name">Aesthetica Film Festival</span>
+        </div>
+        <div class="festival-row__award">Selected — Short Drama</div>
+      </div>
+      <div class="festival-row" role="listitem">
+        <div class="festival-row__left">
+          <span class="festival-row__year">2023</span>
+          <span class="festival-row__name">Leeds International Film Festival</span>
+        </div>
+        <div class="festival-row__award">Official Selection</div>
+      </div>
+      <div class="festival-row" role="listitem">
+        <div class="festival-row__left">
+          <span class="festival-row__year">2022</span>
+          <span class="festival-row__name">Northern Film Awards</span>
+        </div>
+        <div class="festival-row__award">Best Cinematography</div>
+      </div>
+      <div class="festival-row" role="listitem">
+        <div class="festival-row__left">
+          <span class="festival-row__year">2021</span>
+          <span class="festival-row__name">Creative England</span>
+        </div>
+        <div class="festival-row__award">Commission recipient</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- VIDEO MODAL -->
+<div class="modal-backdrop" id="video-modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal">
+    <button class="modal__close" onclick="closeVideoModal()" aria-label="Close video">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+    <div class="modal__video-wrap" id="modal-video-wrap"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__name">J. Mercer — Filmmaker</span>
+    <ul class="footer__links">
+      <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
+      <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2024 J. Mercer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => { /* nav init handled in main.js */ });</script>
+</body>
+</html>

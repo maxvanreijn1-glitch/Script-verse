@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Films — J. Mercer</title>
+  <meta name="description" content="Short films by J. Mercer — drama and documentary, available to watch via Vimeo and YouTube.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    /* ── Featured (hero film) ── */
+    .film-featured {
+      margin-bottom: 60px;
+      cursor: pointer;
+    }
+
+    .film-featured__thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #16120d;
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .film-featured__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(22,18,13,0.7) 0%, rgba(22,18,13,0.1) 60%);
+      transition: opacity 0.2s;
+    }
+
+    .film-featured:hover .film-featured__overlay { opacity: 0.7; }
+
+    .film-featured__play {
+      position: absolute;
+      z-index: 2;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 26px;
+      transition: all 0.2s;
+    }
+
+    .film-featured:hover .film-featured__play {
+      border-color: white;
+      background: rgba(255,255,255,0.12);
+      transform: scale(1.06);
+    }
+
+    .film-featured__caption {
+      position: absolute;
+      bottom: 24px;
+      left: 28px;
+      right: 28px;
+      z-index: 2;
+    }
+
+    .film-featured__caption-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+
+    .film-featured__caption-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .film-featured__caption-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .film-featured__duration {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      z-index: 2;
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.4);
+      padding: 3px 9px;
+      border-radius: 2px;
+    }
+
+    .film-featured__placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      color: rgba(255,255,255,0.04);
+    }
+
+    /* ── Film grid ── */
+    .films-main-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+
+    .film-item { cursor: pointer; }
+
+    .film-item__info {
+      padding: 16px 18px 20px;
+    }
+
+    .film-item__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .film-item__desc {
+      font-size: 13px;
+      color: var(--ink-light);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .film-item__meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .film-item__credits {
+      font-size: 11px;
+      color: var(--ink-faint);
+      border-top: 1px solid var(--divider);
+      padding-top: 10px;
+      line-height: 1.7;
+    }
+
+    /* ── Process section ── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .process-step {
+      padding: 22px;
+      background: var(--parchment);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+    }
+
+    .process-step__num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .process-step__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .process-step__text {
+      font-size: 13px;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .film-featured__caption-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">J. Mercer</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="screenplays.html">Screenplays</a></li>
+      <li><a href="films.html">Films</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow page-hero__eyebrow">The work</p>
+    <h1 class="page-hero__title">Short <em>films</em></h1>
+    <p class="page-hero__sub">Four films made between 2021 and 2024. Drama, documentary, and the space between. Watch online or reach out to request a screener for festival programmers.</p>
+  </div>
+
+  <!-- FEATURED FILM -->
+  <section aria-label="Featured film">
+    <div class="section-rule">Latest film</div>
+    <div
+      class="film-featured card"
+      onclick="openVideoModal('https://vimeo.com/YOUR_VIMEO_ID', 'vimeo')"
+      role="button"
+      tabindex="0"
+      aria-label="Watch The Estate — 18 minutes"
+    >
+      <div class="film-featured__thumb">
+        <div class="film-featured__placeholder"><i class="ti ti-trees" aria-hidden="true"></i></div>
+        <div class="film-featured__overlay"></div>
+        <div class="film-featured__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+        <span class="film-featured__duration">18:02</span>
+        <div class="film-featured__caption">
+          <p class="film-featured__caption-label">Documentary · 2024</p>
+          <h2 class="film-featured__caption-title">The Estate</h2>
+          <p class="film-featured__caption-sub">The last working farm on the Northumberland coast. Four seasons. One family.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL FILMS GRID -->
+  <section aria-label="All films" style="margin-top:60px;">
+    <div class="section-rule">All films</div>
+
+    <div class="films-main-grid">
+
+      <!-- Film 1 -->
+      <article
+        class="card film-item"
+        onclick="openVideoModal('https://vimeo.com/YOUR_BEFORE_THE_TIDE_ID', 'vimeo')"
+        role="button"
+        tabindex="0"
+        aria-label="Watch Before the Tide"
+      >
+        <div class="film-thumb" style="background:#1a1410;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-wave-sine" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">12:34</span>
+        </div>
+        <div class="film-item__info">
+          <h3 class="film-item__title">Before the Tide</h3>
+          <p class="film-item__desc">A fisherman returns to his coastal village after thirty years away to settle his father's affairs. He finds more than an estate to clear.</p>
+          <div class="film-item__meta">
+            <span class="tag">Drama</span>
+            <span class="tag tag--amber">Vimeo</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2023</span>
+          </div>
+          <div class="film-item__credits">
+            Dir. J. Mercer &nbsp;·&nbsp; DP: A. Whitfield &nbsp;·&nbsp; Prod: R. Knox<br>
+            Aesthetica FF 2024 — Selected
+          </div>
+        </div>
+      </article>
+
+      <!-- Film 2 -->
+      <article
+        class="card film-item"
+        onclick="openVideoModal('https://youtube.com/watch?v=YOUR_ROOM_4B_ID', 'youtube')"
+        role="button"
+        tabindex="0"
+        aria-label="Watch Room 4B"
+      >
+        <div class="film-thumb" style="background:#141820;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">8:17</span>
+        </div>
+        <div class="film-item__info">
+          <h3 class="film-item__title">Room 4B</h3>
+          <p class="film-item__desc">Two strangers share a waiting room and discover their lives are more entangled than they knew. Shot in a single afternoon.</p>
+          <div class="film-item__meta">
+            <span class="tag">Drama</span>
+            <span class="tag tag--coral">YouTube</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2022</span>
+          </div>
+          <div class="film-item__credits">
+            Dir. J. Mercer &nbsp;·&nbsp; DP: J. Mercer &nbsp;·&nbsp; 1 location<br>
+            Leeds IFF 2023 — Official Selection
+          </div>
+        </div>
+      </article>
+
+      <!-- Film 3 -->
+      <article
+        class="card film-item"
+        onclick="openVideoModal('https://vimeo.com/YOUR_ESTATE_ID', 'vimeo')"
+        role="button"
+        tabindex="0"
+        aria-label="Watch The Estate"
+      >
+        <div class="film-thumb" style="background:#181410;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-trees" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">18:02</span>
+        </div>
+        <div class="film-item__info">
+          <h3 class="film-item__title">The Estate</h3>
+          <p class="film-item__desc">A documentary portrait of the last working farm on the Northumberland coast, filmed across four seasons.</p>
+          <div class="film-item__meta">
+            <span class="tag">Documentary</span>
+            <span class="tag tag--amber">Vimeo</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2024</span>
+          </div>
+          <div class="film-item__credits">
+            Dir. J. Mercer &nbsp;·&nbsp; DP: A. Whitfield<br>
+            Commissioned — Creative England
+          </div>
+        </div>
+      </article>
+
+      <!-- Film 4 -->
+      <article
+        class="card film-item"
+        onclick="openVideoModal('videos/night-bus.mp4', 'local')"
+        role="button"
+        tabindex="0"
+        aria-label="Watch Night Bus"
+      >
+        <div class="film-thumb" style="background:#0e1018;">
+          <div class="film-thumb__placeholder-icon"><i class="ti ti-bus" aria-hidden="true"></i></div>
+          <div class="film-thumb__overlay"></div>
+          <div class="film-thumb__play"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+          <span class="film-thumb__duration">6:44</span>
+        </div>
+        <div class="film-item__info">
+          <h3 class="film-item__title">Night Bus</h3>
+          <p class="film-item__desc">Shot guerrilla-style on the last bus from Newcastle city centre. Seven strangers, no script, no crew. Just a camera and a question.</p>
+          <div class="film-item__meta">
+            <span class="tag">Documentary</span>
+            <span class="tag">Local file</span>
+            <span style="font-size:12px; color:var(--ink-faint);">2021</span>
+          </div>
+          <div class="film-item__credits">
+            Dir. J. Mercer &nbsp;·&nbsp; No budget<br>
+            Northern Film Awards 2022 — Best Cinematography
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+  <section style="padding: 60px 0;" aria-label="Filmmaking process">
+    <div class="section-rule">How I work</div>
+    <p style="font-size:15px; line-height:1.85; color:var(--ink-light); max-width:560px; margin-bottom:0;">
+      Each film starts with a script or treatment, usually handwritten. Production is lean — small crews, natural light where possible, real locations. Post is done in-house.
+    </p>
+    <div class="process-grid">
+      <div class="process-step">
+        <p class="process-step__num">01 / DEVELOPMENT</p>
+        <h3 class="process-step__title">Script</h3>
+        <p class="process-step__text">Everything starts longhand. First draft is for finding out what it's about. The second is for structure.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-step__num">02 / PRE-PRODUCTION</p>
+        <h3 class="process-step__title">Prep</h3>
+        <p class="process-step__text">Location recce, casting, shot list. I storyboard the emotional beats, not every angle.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-step__num">03 / PRODUCTION</p>
+        <h3 class="process-step__title">Shoot</h3>
+        <p class="process-step__text">Skeleton crew. Usually 2–3 days. Handheld where it helps, locked-off where stillness earns it.</p>
+      </div>
+      <div class="process-step">
+        <p class="process-step__num">04 / POST</p>
+        <h3 class="process-step__title">Edit & grade</h3>
+        <p class="process-step__text">Edited in Premiere. Graded in DaVinci. Sound mixed at home — the room is quiet enough.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /container -->
+</main>
+
+<!-- VIDEO MODAL -->
+<div class="modal-backdrop" id="video-modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal">
+    <button class="modal__close" onclick="closeVideoModal()" aria-label="Close video">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+    <div class="modal__video-wrap" id="modal-video-wrap"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__name">J. Mercer — Filmmaker</span>
+    <ul class="footer__links">
+      <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
+      <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2024 J. Mercer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

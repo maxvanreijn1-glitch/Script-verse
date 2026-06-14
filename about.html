@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — J. Mercer</title>
+  <meta name="description" content="About J. Mercer — independent filmmaker and screenwriter based in Newcastle upon Tyne.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    /* ── Bio layout ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 72px;
+    }
+
+    .about-bio h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .about-bio p {
+      font-size: 15px;
+      line-height: 1.88;
+      color: var(--ink-light);
+      margin-bottom: 1.1em;
+    }
+
+    .about-bio p:last-child { margin-bottom: 0; }
+
+    /* ── Portrait placeholder ── */
+    .about-portrait {
+      background: var(--parchment);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--ink-faint);
+      position: sticky;
+      top: 90px;
+    }
+
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .about-portrait__hint {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    /* ── Credits table ── */
+    .credits-section { padding: 60px 0; border-top: 1px solid var(--divider); }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .credits-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .credit-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--divider);
+      gap: 20px;
+    }
+
+    .credit-item__left { }
+
+    .credit-item__title {
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .credit-item__role {
+      font-size: 12px;
+      color: var(--ink-light);
+      margin-top: 2px;
+    }
+
+    .credit-item__right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .credit-item__fest {
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .credit-item__year {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-top: 2px;
+    }
+
+    /* ── Interests / influences ── */
+    .influences {
+      padding: 60px 0;
+      border-top: 1px solid var(--divider);
+    }
+
+    .influences__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .influence-pill {
+      padding: 8px 16px;
+      background: var(--parchment);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--ink-light);
+    }
+
+    /* ── Timeline ── */
+    .timeline {
+      padding: 60px 0;
+      border-top: 1px solid var(--divider);
+    }
+
+    .timeline__list { position: relative; padding-left: 28px; }
+
+    .timeline__list::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: var(--divider);
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+
+    .timeline__item:last-child { padding-bottom: 0; }
+
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      border: 2px solid var(--cream);
+    }
+
+    .timeline__year {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .timeline__event {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .timeline__detail {
+      font-size: 13px;
+      color: var(--ink-light);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-portrait { aspect-ratio: 4/3; position: static; }
+      .credits-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">J. Mercer</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="screenplays.html">Screenplays</a></li>
+      <li><a href="films.html">Films</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow page-hero__eyebrow">The person</p>
+    <h1 class="page-hero__title">About <em>me</em></h1>
+  </div>
+
+  <!-- BIO + PORTRAIT -->
+  <div class="about-grid">
+    <div class="about-bio">
+      <h2>Writer, director, Newcastle.</h2>
+      <p>I make films about ordinary people in extraordinary moments — the fisherman who left, the daughter who stayed, the house that remembers everyone who passed through it. I'm drawn to the small, loaded silences: what people do instead of saying what they mean.</p>
+      <p>I grew up on the north-east coast, which probably explains a lot. The light is specific there. The weather has opinions. People don't perform their feelings, they just carry them around. That's the cinema I want to make.</p>
+      <p>I write everything longhand first. The first draft is for finding out what the story is actually about. The second is for structure. By the third I'm usually cutting the scenes I was most proud of. That's when it gets good.</p>
+      <p>My work sits somewhere between social realism and character study. I'm not interested in plot as a delivery mechanism for message. I'm interested in people making decisions under pressure, and in the small domestic textures that surround those moments.</p>
+      <p>I work lean. Most of my films have been made with a crew of two or three, in real locations, in available light. Constraint is a collaborator, not a compromise.</p>
+      <p>Based in Newcastle. Open to collaboration, commission, and conversation.</p>
+    </div>
+
+    <div>
+      <!-- Replace the div below with an <img> tag pointing to your actual photo -->
+      <div class="about-portrait" aria-label="Portrait photo placeholder">
+        <i class="ti ti-user" style="font-size:40px; opacity:0.25;" aria-hidden="true"></i>
+        <p class="about-portrait__hint">Replace this with your photo:<br><code style="font-size:11px;">&lt;img src="images/portrait.jpg" alt="J. Mercer"&gt;</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREDITS & FESTIVALS -->
+  <section class="credits-section" aria-label="Credits and festival history">
+    <div class="section-rule">Credits &amp; recognition</div>
+    <div class="credits-grid">
+
+      <div class="credits-col">
+        <h3>Films</h3>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">The Estate</p>
+            <p class="credit-item__role">Director, producer</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">Creative England commission</p>
+            <p class="credit-item__year">2024</p>
+          </div>
+        </div>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">Before the Tide</p>
+            <p class="credit-item__role">Director, writer</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">Aesthetica FF — Selected</p>
+            <p class="credit-item__year">2023</p>
+          </div>
+        </div>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">Room 4B</p>
+            <p class="credit-item__role">Director, writer</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">Leeds IFF — Official Selection</p>
+            <p class="credit-item__year">2022</p>
+          </div>
+        </div>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">Night Bus</p>
+            <p class="credit-item__role">Director, camera</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">Northern Film Awards — Best Cinematography</p>
+            <p class="credit-item__year">2021</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="credits-col">
+        <h3>Screenplays</h3>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">The Fog at Hartley</p>
+            <p class="credit-item__role">Feature drama · 88pp</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">In development</p>
+            <p class="credit-item__year">2024</p>
+          </div>
+        </div>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">Saltburn Road</p>
+            <p class="credit-item__role">Short drama · 22pp</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">Seeking production</p>
+            <p class="credit-item__year">2023</p>
+          </div>
+        </div>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">Between Shifts</p>
+            <p class="credit-item__role">Documentary treatment</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">In development</p>
+            <p class="credit-item__year">2024</p>
+          </div>
+        </div>
+
+        <div class="credit-item">
+          <div class="credit-item__left">
+            <p class="credit-item__title">Other works</p>
+            <p class="credit-item__role">3 further completed scripts</p>
+          </div>
+          <div class="credit-item__right">
+            <p class="credit-item__fest">Available on request</p>
+            <p class="credit-item__year">2019–22</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline" aria-label="Career timeline">
+    <div class="section-rule">Timeline</div>
+    <div class="timeline__list">
+      <div class="timeline__item">
+        <p class="timeline__year">2024</p>
+        <p class="timeline__event">The Estate — commissioned documentary</p>
+        <p class="timeline__detail">Funded by Creative England. Filmed across four seasons on a working Northumberland farm. Currently in post.</p>
+      </div>
+      <div class="timeline__item">
+        <p class="timeline__year">2023</p>
+        <p class="timeline__event">Before the Tide — selected, Aesthetica Film Festival</p>
+        <p class="timeline__detail">First festival selection. Shot in three days in Seahouses, Northumberland. Crew of two.</p>
+      </div>
+      <div class="timeline__item">
+        <p class="timeline__year">2022</p>
+        <p class="timeline__event">Room 4B — Leeds International Film Festival</p>
+        <p class="timeline__detail">Shot in a single afternoon in a borrowed NHS waiting room. Official selection, short drama.</p>
+      </div>
+      <div class="timeline__item">
+        <p class="timeline__year">2021</p>
+        <p class="timeline__event">Night Bus — Northern Film Awards, Best Cinematography</p>
+        <p class="timeline__detail">No budget, no crew. Shot on the last 1A bus from Newcastle over four consecutive nights.</p>
+      </div>
+      <div class="timeline__item">
+        <p class="timeline__year">2019</p>
+        <p class="timeline__event">Started writing seriously</p>
+        <p class="timeline__detail">Left a career in architecture to write screenplays. Completed three features in two years. None of them made it but all of them taught something.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFLUENCES -->
+  <section class="influences" aria-label="Influences">
+    <div class="section-rule">Influences</div>
+    <p style="font-size:14px; color:var(--ink-light);">Films, writers, and ways of seeing that shaped how I work.</p>
+    <div class="influences__list">
+      <span class="influence-pill">Lynne Ramsay</span>
+      <span class="influence-pill">Loach &amp; Laverty</span>
+      <span class="influence-pill">Alice Birch</span>
+      <span class="influence-pill">Andrea Arnold</span>
+      <span class="influence-pill">Chantal Akerman</span>
+      <span class="influence-pill">David Almond</span>
+      <span class="influence-pill">Paterson (Jarmusch)</span>
+      <span class="influence-pill">Les Blank</span>
+      <span class="influence-pill">Kes</span>
+      <span class="influence-pill">Hettie Macdonald</span>
+      <span class="influence-pill">The Arbor</span>
+    </div>
+  </section>
+
+</div><!-- /container -->
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__name">J. Mercer — Filmmaker</span>
+    <ul class="footer__links">
+      <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
+      <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2024 J. Mercer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screenplays — J. Mercer</title>
+  <meta name="description" content="Screenplays by J. Mercer, with draft-by-draft progression from first idea to final script.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    .screenplay-card {
+      margin-bottom: 40px;
+    }
+
+    .screenplay-card__header {
+      padding: 22px 26px 18px;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .screenplay-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .screenplay-card__meta {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .screenplay-card__synopsis {
+      padding: 16px 26px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink-light);
+      border-bottom: 1px solid var(--divider);
+      background: rgba(44,36,22,0.015);
+    }
+
+    .screenplay-card__draft-badge {
+      background: var(--amber);
+      color: white;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .screenplay-card__content {
+      padding: 26px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      line-height: 1.95;
+      color: var(--ink);
+      white-space: pre-wrap;
+      min-height: 200px;
+      background: var(--parchment);
+    }
+
+    .screenplay-card__footer {
+      padding: 13px 26px;
+      border-top: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(44,36,22,0.025);
+    }
+
+    .screenplay-card__stat {
+      font-size: 12px;
+      color: var(--ink-light);
+      font-family: 'Courier Prime', monospace;
+    }
+
+    .draft-notes {
+      background: var(--amber-pale);
+      border-left: 3px solid var(--amber);
+      padding: 12px 18px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-light);
+      margin: 0 26px 18px;
+      border-radius: 0 2px 2px 0;
+    }
+    .draft-notes strong {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* filter bar */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 7px 16px;
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      background: transparent;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">J. Mercer</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="screenplays.html">Screenplays</a></li>
+      <li><a href="films.html">Films</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow page-hero__eyebrow">The work</p>
+    <h1 class="page-hero__title">Screen<em>plays</em></h1>
+    <p class="page-hero__sub">Every script below shows its full journey — first draft to final. Drag the timeline to move between versions and see how each story found itself.</p>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar" role="group" aria-label="Filter screenplays">
+    <button class="filter-btn active" onclick="filterScripts('all', this)">All</button>
+    <button class="filter-btn" onclick="filterScripts('feature', this)">Feature</button>
+    <button class="filter-btn" onclick="filterScripts('short', this)">Short</button>
+    <button class="filter-btn" onclick="filterScripts('drama', this)">Drama</button>
+    <button class="filter-btn" onclick="filterScripts('documentary', this)">Documentary</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SCREENPLAY 1 — The Fog at Hartley
+  ═══════════════════════════════════════ -->
+  <article class="card screenplay-card" data-genre="drama" data-type="feature">
+    <div class="screenplay-card__header">
+      <div>
+        <h2 class="screenplay-card__title">The Fog at Hartley</h2>
+        <p class="screenplay-card__meta">Drama · Feature · 4 drafts</p>
+      </div>
+      <span class="screenplay-card__draft-badge" id="badge-fog">Draft 1</span>
+    </div>
+
+    <p class="screenplay-card__synopsis">Eleanor hasn't left the farmhouse in six years. When her estranged son arrives unannounced, the coastal fog that's been creeping in each morning suddenly has company. A slow-burn drama about memory, inheritance, and the things we leave unsaid until it's almost too late.</p>
+
+    <!-- FILMSTRIP TIMELINE -->
+    <div class="filmstrip-wrap">
+      <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
+      <div class="filmstrip-track">
+        <div class="filmstrip-hole"></div>
+        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-fog" style="width:0%"></div></div>
+        <div class="filmstrip-hole"></div>
+      </div>
+      <input type="range" class="draft-slider" id="slider-fog" min="1" max="4" value="1" step="1" aria-label="Select draft">
+      <div class="draft-nodes">
+        <div class="draft-node" role="button" tabindex="0" aria-label="Draft 1">
+          <div class="draft-node__dot is-active" id="dot-fog-1"></div>
+          <span class="draft-node__label">Draft 1</span>
+        </div>
+        <div class="draft-node" role="button" tabindex="0" aria-label="Draft 2">
+          <div class="draft-node__dot" id="dot-fog-2"></div>
+          <span class="draft-node__label">Draft 2</span>
+        </div>
+        <div class="draft-node" role="button" tabindex="0" aria-label="Draft 3">
+          <div class="draft-node__dot" id="dot-fog-3"></div>
+          <span class="draft-node__label">Draft 3</span>
+        </div>
+        <div class="draft-node" role="button" tabindex="0" aria-label="Final draft">
+          <div class="draft-node__dot" id="dot-fog-4"></div>
+          <span class="draft-node__label">Final</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRAFT NOTES (changes per draft) -->
+    <div class="draft-notes" id="notes-fog">
+      <strong>Draft 1 — Jan 2024</strong>
+      First pass. Getting the story on paper. Eleanor's voice is rough but present. The fog is too literal — needs to earn its metaphor.
+    </div>
+
+    <div class="screenplay-card__content" id="content-fog">INT. FARMHOUSE KITCHEN - MORNING
+
+ELEANOR (60s) stands at the window. Outside,
+a thick fog has rolled in off the coast.
+
+ELEANOR
+It's here again.
+
+She pours tea, hands shaking slightly.
+    </div>
+
+    <div class="screenplay-card__footer">
+      <span class="screenplay-card__stat" id="stat-fog">89 pages · Jan 2024</span>
+      <div style="display:flex; gap:10px;">
+        <a href="pages/fog-at-hartley-draft1.pdf" class="btn btn--ghost" download>
+          <i class="ti ti-download" aria-hidden="true"></i> Download draft
+        </a>
+        <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- ═══════════════════════════════════════
+       SCREENPLAY 2 — Saltburn Road
+  ═══════════════════════════════════════ -->
+  <article class="card screenplay-card" data-genre="drama" data-type="short">
+    <div class="screenplay-card__header">
+      <div>
+        <h2 class="screenplay-card__title">Saltburn Road</h2>
+        <p class="screenplay-card__meta">Drama · Short (22 min) · 3 drafts</p>
+      </div>
+      <span class="screenplay-card__draft-badge" id="badge-salt">Draft 1</span>
+    </div>
+
+    <p class="screenplay-card__synopsis">A teenage girl visits her grandmother every Sunday. One morning the grandmother doesn't answer the door, and the girl must decide how long to wait on the step. A single-location short about the patience we owe each other.</p>
+
+    <div class="filmstrip-wrap">
+      <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
+      <div class="filmstrip-track">
+        <div class="filmstrip-hole"></div>
+        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-salt" style="width:0%"></div></div>
+        <div class="filmstrip-hole"></div>
+      </div>
+      <input type="range" class="draft-slider" id="slider-salt" min="1" max="3" value="1" step="1" aria-label="Select draft">
+      <div class="draft-nodes">
+        <div class="draft-node" role="button" tabindex="0">
+          <div class="draft-node__dot is-active" id="dot-salt-1"></div>
+          <span class="draft-node__label">Draft 1</span>
+        </div>
+        <div class="draft-node" role="button" tabindex="0">
+          <div class="draft-node__dot" id="dot-salt-2"></div>
+          <span class="draft-node__label">Draft 2</span>
+        </div>
+        <div class="draft-node" role="button" tabindex="0">
+          <div class="draft-node__dot" id="dot-salt-3"></div>
+          <span class="draft-node__label">Final</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="draft-notes" id="notes-salt">
+      <strong>Draft 1 — Mar 2023</strong>
+      Too much dialogue. The girl explains herself. She shouldn't have to.
+    </div>
+
+    <div class="screenplay-card__content" id="content-salt">EXT. TERRACED HOUSE, FRONT STEP - MORNING
+
+MAISIE (16) rings the doorbell a second time.
+She can hear the television through the glass.
+She knows her nan is in.
+
+She rings again. Waits.
+
+She sits down on the step.
+    </div>
+
+    <div class="screenplay-card__footer">
+      <span class="screenplay-card__stat" id="stat-salt">28 pages · Mar 2023</span>
+      <div style="display:flex; gap:10px;">
+        <a href="pages/saltburn-road-draft1.pdf" class="btn btn--ghost" download>
+          <i class="ti ti-download" aria-hidden="true"></i> Download draft
+        </a>
+        <button class="btn btn--outline">Read in full</button>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- ═══════════════════════════════════════
+       SCREENPLAY 3 — Between Shifts
+  ═══════════════════════════════════════ -->
+  <article class="card screenplay-card" data-genre="documentary" data-type="short">
+    <div class="screenplay-card__header">
+      <div>
+        <h2 class="screenplay-card__title">Between Shifts</h2>
+        <p class="screenplay-card__meta">Documentary · Short (15 min) · 2 drafts</p>
+      </div>
+      <span class="screenplay-card__draft-badge" id="badge-shift">Draft 1</span>
+    </div>
+
+    <p class="screenplay-card__synopsis">Three NHS nurses. Four nights. A documentary treatment exploring the hours between the end of a shift and the beginning of sleep — what people do with the strange half-time of a life lived on rotation.</p>
+
+    <div class="filmstrip-wrap">
+      <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
+      <div class="filmstrip-track">
+        <div class="filmstrip-hole"></div>
+        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-shift" style="width:0%"></div></div>
+        <div class="filmstrip-hole"></div>
+      </div>
+      <input type="range" class="draft-slider" id="slider-shift" min="1" max="2" value="1" step="1" aria-label="Select draft">
+      <div class="draft-nodes">
+        <div class="draft-node" role="button" tabindex="0">
+          <div class="draft-node__dot is-active" id="dot-shift-1"></div>
+          <span class="draft-node__label">Treatment</span>
+        </div>
+        <div class="draft-node" role="button" tabindex="0">
+          <div class="draft-node__dot" id="dot-shift-2"></div>
+          <span class="draft-node__label">Final</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="draft-notes" id="notes-shift">
+      <strong>Treatment — Aug 2024</strong>
+      Initial pitch document. Structure loose — three acts map to three nurses. Tightening required once access is confirmed.
+    </div>
+
+    <div class="screenplay-card__content" id="content-shift">BETWEEN SHIFTS
+A documentary treatment
+
+The night shift ends at 07:30.
+
+By 07:45 the car park is clearing.
+By 08:00, SARAH is on the A19, radio off,
+window cracked.
+
+She won't sleep until noon.
+She doesn't know what to do with those hours.
+Neither do we. That's the film.
+    </div>
+
+    <div class="screenplay-card__footer">
+      <span class="screenplay-card__stat" id="stat-shift">12 pages · Aug 2024</span>
+      <div style="display:flex; gap:10px;">
+        <a href="pages/between-shifts-treatment.pdf" class="btn btn--ghost" download>
+          <i class="ti ti-download" aria-hidden="true"></i> Download treatment
+        </a>
+        <button class="btn btn--outline">Read in full</button>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /container -->
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__name">J. Mercer — Filmmaker</span>
+    <ul class="footer__links">
+      <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
+      <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2024 J. Mercer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+/* ── Draft data ───────────────────────────────────────── */
+const fogDrafts = [
+  {
+    label: 'Draft 1',
+    text: `INT. FARMHOUSE KITCHEN - MORNING
+
+ELEANOR (60s) stands at the window. Outside,
+a thick fog has rolled in off the coast.
+
+ELEANOR
+It's here again.
+
+She pours tea, hands shaking slightly.`,
+    notes: '<strong>Draft 1 — Jan 2024</strong>\nFirst pass. Getting the story on paper. Eleanor\'s voice is rough but present. The fog is too literal — needs to earn its metaphor.',
+    pages: '89 pages', date: 'Jan 2024'
+  },
+  {
+    label: 'Draft 2',
+    text: `INT. FARMHOUSE KITCHEN - EARLY MORNING
+
+ELEANOR (68) stands at the sink. Through the
+window, a dense coastal fog swallows the garden.
+
+She has stood here before. Many mornings.
+This one feels different. She can't say why.
+
+ELEANOR
+(to herself)
+Still here.
+
+She fills the kettle. Her hands are steady now.`,
+    notes: '<strong>Draft 2 — Mar 2024</strong>\nEleanor\'s age pinned down. Cut the shaking hands — too on-the-nose. Her stillness is scarier than her trembling.',
+    pages: '94 pages', date: 'Mar 2024'
+  },
+  {
+    label: 'Draft 3',
+    text: `INT. FARMHOUSE KITCHEN - DAWN
+
+The fog is in before Eleanor is. She finds it
+pressed against the glass when she comes
+downstairs.
+
+ELEANOR stands at the window a long time
+before putting the kettle on.
+
+ELEANOR
+(quietly)
+Still here, then.
+
+A beat. She doesn't mean the fog.`,
+    notes: '<strong>Draft 3 — Jun 2024</strong>\nFlipped the opening — the fog arrives before Eleanor does. Better. The parenthetical "quietly" can probably go in the final.',
+    pages: '91 pages', date: 'Jun 2024'
+  },
+  {
+    label: 'Final Draft',
+    text: `INT. FARMHOUSE KITCHEN - DAWN
+
+The fog is already there when ELEANOR comes
+downstairs. Pressed against the glass like
+it's been waiting.
+
+She doesn't rush to the kettle. She just
+looks at it.
+
+                    ELEANOR
+          You again.
+
+The fog doesn't answer. Neither does she.
+The kettle goes on. The morning begins.
+
+                                    CUT TO:`,
+    notes: '<strong>Final Draft — Sep 2024</strong>\nDropped the parenthetical. Cut seven pages of backstory exposition in Act 2. "You again" is shorter and better than "Still here, then."',
+    pages: '88 pages', date: 'Sep 2024'
+  }
+];
+
+const saltDrafts = [
+  {
+    label: 'Draft 1',
+    text: `EXT. TERRACED HOUSE, FRONT STEP - MORNING
+
+MAISIE (16) rings the doorbell a second time.
+She can hear the television through the glass.
+She knows her nan is in.
+
+She rings again. Waits.
+
+She sits down on the step.`,
+    notes: '<strong>Draft 1 — Mar 2023</strong>\nToo much dialogue. The girl explains herself. She shouldn\'t have to.',
+    pages: '28 pages', date: 'Mar 2023'
+  },
+  {
+    label: 'Draft 2',
+    text: `EXT. TERRACED HOUSE, FRONT STEP - MORNING
+
+MAISIE (16) rings. Waits. Rings again.
+
+The television murmurs behind the glass.
+
+She tries the letterbox.
+
+MAISIE
+Nan?
+
+Nothing.
+
+She sits on the step and puts her bag
+between her feet. She's going to be
+here a while.`,
+    notes: '<strong>Draft 2 — May 2023</strong>\nLetterbox moment added — more physical, less verbal. Cut the internal monologue entirely. The bag-between-the-feet tells us she\'s committed.',
+    pages: '24 pages', date: 'May 2023'
+  },
+  {
+    label: 'Final Draft',
+    text: `EXT. TERRACED HOUSE, FRONT STEP - MORNING
+
+MAISIE (16) rings. Waits.
+
+The television is on. She can hear it.
+
+She opens the letterbox, lets it close
+quietly. Sits on the step. Puts her bag
+down between her feet.
+
+Time passes.
+
+A neighbour walks a dog. Glances.
+MAISIE looks straight ahead.`,
+    notes: '<strong>Final — Jul 2023</strong>\nRemoved her calling through the letterbox. She opens it, then decides not to say anything — that\'s more honest. The neighbour moment added in table read.',
+    pages: '22 pages', date: 'Jul 2023'
+  }
+];
+
+const shiftDrafts = [
+  {
+    label: 'Treatment',
+    text: `BETWEEN SHIFTS
+A documentary treatment
+
+The night shift ends at 07:30.
+
+By 07:45 the car park is clearing.
+By 08:00, SARAH is on the A19, radio off,
+window cracked.
+
+She won't sleep until noon.
+She doesn't know what to do with those hours.
+Neither do we. That's the film.`,
+    notes: '<strong>Treatment — Aug 2024</strong>\nInitial pitch document. Structure loose — three acts map to three nurses. Tightening required once access is confirmed.',
+    pages: '12 pages', date: 'Aug 2024'
+  },
+  {
+    label: 'Final Script',
+    text: `BETWEEN SHIFTS
+Shooting script
+
+STRUCTURE:
+Act 1 — Sarah (A&E, 14 years)
+         Drives home. Doesn't go in.
+         Sits in the car outside her own house.
+
+Act 2 — Dev (Oncology, 6 years)
+         Goes to the gym. Lifts until he can't.
+         Sits in the steam room alone.
+
+Act 3 — Cath (Paeds, 22 years)
+         Walks. Just walks. The city at 8am
+         belongs to nobody and she likes that.`,
+    notes: '<strong>Final Script — Nov 2024</strong>\nThree nurses confirmed. Access granted. Cut the fourth subject — three voices is cleaner. Each act now has a defining action not a monologue.',
+    pages: '18 pages', date: 'Nov 2024'
+  }
+];
+
+/* ── Init all filmstrips ─────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  function initScript(key, drafts) {
+    initFilmstrip({
+      sliderId:  `slider-${key}`,
+      fillId:    `fill-${key}`,
+      badgeId:   `badge-${key}`,
+      statId:    `stat-${key}`,
+      contentId: `content-${key}`,
+      dotPrefix: `dot-${key}-`,
+      drafts: drafts.map(d => ({
+        label: d.label,
+        text:  d.text,
+        pages: d.pages,
+        date:  d.date
+      }))
+    });
+
+    /* hook notes separately */
+    const slider = document.getElementById(`slider-${key}`);
+    const notes  = document.getElementById(`notes-${key}`);
+    if (slider && notes) {
+      slider.addEventListener('input', () => {
+        notes.innerHTML = drafts[parseInt(slider.value) - 1].notes;
+      });
+    }
+  }
+
+  initScript('fog',   fogDrafts);
+  initScript('salt',  saltDrafts);
+  initScript('shift', shiftDrafts);
+});
+
+/* ── Genre filter ────────────────────────────────────── */
+function filterScripts(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.screenplay-card').forEach(card => {
+    const genre = card.dataset.genre;
+    const type  = card.dataset.type;
+    const show  = filter === 'all' || filter === genre || filter === type;
+    card.style.display = show ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

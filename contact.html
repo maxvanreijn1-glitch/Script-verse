@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — J. Mercer</title>
+  <meta name="description" content="Get in touch with J. Mercer — collaboration, commissions, press, and festival screeners.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ── Form ── */
+    .contact-form { }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid rgba(44,36,22,0.2);
+      border-radius: 2px;
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B5A3E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-submit {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--ink-faint);
+    }
+
+    .form-success {
+      display: none;
+      padding: 16px 20px;
+      background: rgba(100,160,60,0.08);
+      border: 1px solid rgba(100,160,60,0.2);
+      border-radius: 2px;
+      font-size: 14px;
+      color: #3a7020;
+      margin-top: 16px;
+    }
+
+    .form-success.is-visible { display: block; }
+
+    /* ── Sidebar ── */
+    .contact-sidebar { }
+
+    .sidebar-block {
+      margin-bottom: 36px;
+    }
+
+    .sidebar-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      background: var(--parchment);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+      color: var(--ink-light);
+      font-size: 13px;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+
+    .sidebar-link:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .sidebar-link i { font-size: 16px; flex-shrink: 0; }
+
+    .sidebar-text {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--ink-light);
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: rgba(100,160,60,0.08);
+      border: 1px solid rgba(100,160,60,0.2);
+      border-radius: 2px;
+      font-size: 12px;
+      color: #3a7020;
+      margin-bottom: 16px;
+    }
+
+    .availability-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4a9020;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 680px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">J. Mercer</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="screenplays.html">Screenplays</a></li>
+      <li><a href="films.html">Films</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="eyebrow page-hero__eyebrow">Get in touch</p>
+    <h1 class="page-hero__title">Let's <em>talk</em></h1>
+    <p class="page-hero__sub">Whether you're a programmer looking for a screener, a producer interested in a script, or someone who wants to collaborate — get in touch. I read everything.</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- CONTACT FORM -->
+    <section aria-label="Contact form">
+      <div class="section-rule">Send a message</div>
+
+      <!-- NOTE: Replace action with your actual form handler endpoint.
+           Options: Netlify Forms, Formspree (free tier), EmailJS, or a backend endpoint.
+           For Netlify: add netlify attribute to form tag.
+           For Formspree: action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+      -->
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Reason for contact</label>
+          <select id="reason" name="reason" required>
+            <option value="" disabled selected>Select a reason…</option>
+            <option value="collaboration">Collaboration</option>
+            <option value="commission">Commission / funding</option>
+            <option value="screener">Festival screener request</option>
+            <option value="script">Script enquiry</option>
+            <option value="press">Press / interview</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me what you're working on, what you're looking for, or just say hello." required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn--solid">
+            Send message <i class="ti ti-send" aria-hidden="true"></i>
+          </button>
+          <span class="form-note">I usually reply within a few days.</span>
+        </div>
+
+        <div class="form-success" id="form-success" role="alert">
+          <i class="ti ti-check" aria-hidden="true"></i> Message sent — I'll be in touch soon.
+        </div>
+      </form>
+    </section>
+
+    <!-- SIDEBAR -->
+    <aside class="contact-sidebar" aria-label="Contact information">
+      <div class="section-rule">Find me online</div>
+
+      <div class="sidebar-block">
+        <div class="availability-badge">Available for new projects</div>
+        <p class="sidebar-text">Currently accepting commissions and collaboration enquiries for 2025. Particularly interested in documentary and character-driven drama.</p>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>Online</h3>
+        <a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener" class="sidebar-link">
+          <i class="ti ti-brand-vimeo" aria-hidden="true"></i> Vimeo — @yourhandle
+        </a>
+        <a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener" class="sidebar-link">
+          <i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram — @yourhandle
+        </a>
+        <a href="mailto:hello@yourname.com" class="sidebar-link">
+          <i class="ti ti-mail" aria-hidden="true"></i> hello@yourname.com
+        </a>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>For programmers</h3>
+        <p class="sidebar-text">If you're a festival programmer looking for a screener, use the form with "Festival screener request" selected and include your festival name and submission window. I'll send a private Vimeo link.</p>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>For producers</h3>
+        <p class="sidebar-text">PDFs of completed scripts are available on request. The Fog at Hartley (feature) and Saltburn Road (short) are both seeking production partners.</p>
+      </div>
+
+      <div class="sidebar-block">
+        <h3>Location</h3>
+        <p class="sidebar-text">Based in Newcastle upon Tyne. Available to travel for the right project.</p>
+      </div>
+    </aside>
+
+  </div>
+
+</div><!-- /container -->
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__name">J. Mercer — Filmmaker</span>
+    <ul class="footer__links">
+      <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
+      <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2024 J. Mercer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name    = document.getElementById('name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const reason  = document.getElementById('reason').value;
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !reason || !message) {
+    alert('Please fill in all fields before sending.');
+    return;
+  }
+
+  const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRx.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     TO MAKE THIS FORM ACTUALLY SEND EMAILS, choose one option:
+
+     OPTION A — Formspree (easiest, free tier):
+       1. Sign up at formspree.io
+       2. Create a new form, copy your endpoint
+       3. Change the <form> tag to:
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+       4. Remove this JS handler and let native form POST handle it.
+
+     OPTION B — Netlify Forms (if hosted on Netlify):
+       1. Add `netlify` and `name="contact"` attrs to the <form> tag.
+       2. Netlify auto-detects and handles submissions.
+       3. Remove this JS handler.
+
+     OPTION C — EmailJS (JS-based, no backend):
+       1. Sign up at emailjs.com
+       2. npm / CDN install emailjs-com
+       3. Call emailjs.send() inside this handler.
+
+     For now, the form simulates success to show the UX.
+  ─────────────────────────────────────────────────────────────── */
+
+  const btn = this.querySelector('[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  setTimeout(() => {
+    document.getElementById('form-success').classList.add('is-visible');
+    this.reset();
+    btn.disabled = false;
+    btn.innerHTML = 'Send message <i class="ti ti-send" aria-hidden="true"></i>';
+  }, 800);
+});
+</script>
+</body>
+</html>
