@@ -4,468 +4,507 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Screenplays — Jack Dempsey</title>
-  <meta name="description" content="Screenplays by Jack Dempsey, with draft-by-draft progression from first idea to final script.">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Screenplays by Jack Dempsey.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&family=Courier+Prime&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
   <style>
-    .screenplay-card {
-      margin-bottom: 40px;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1c1612;
+      --ink-light: #5a4f43;
+      --ink-faint: #9c8f82;
+      --parchment: #f8f5f0;
+      --paper: #fdfcfa;
+      --amber: #b8832a;
+      --amber-pale: #faf4e8;
+      --divider: rgba(44,36,22,0.1);
+      --card-bg: #ffffff;
     }
 
-    .screenplay-card__header {
-      padding: 22px 26px 18px;
-      border-bottom: 1px solid var(--divider);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .screenplay-card__title {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 400;
+    body {
+      background: var(--parchment);
       color: var(--ink);
-      margin-bottom: 5px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    .screenplay-card__meta {
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--paper);
+      border-bottom: 1px solid var(--divider);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
       font-size: 12px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 40px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--divider);
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; }
+    .hero p {
+      font-size: 15px;
+      color: var(--ink-light);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* ── FILTERS ── */
+    .filters {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 40px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--divider);
+    }
+    .filter-btn {
+      padding: 6px 16px;
+      border: 1px solid var(--divider);
+      border-radius: 2px;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .filter-btn:hover { border-color: var(--amber); color: var(--amber); }
+    .filter-btn.active { background: var(--amber); border-color: var(--amber); color: #fff; }
+
+    /* ── GRID ── */
+    .grid {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── SCRIPT CARD ── */
+    .script-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .script-card:hover {
+      border-color: rgba(184,131,42,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(44,36,22,0.08);
+    }
+    .script-card:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px;
+    }
+
+    .card-type-strip {
+      height: 3px;
+      background: var(--amber);
+      opacity: 0.55;
+    }
+    .card-type-strip.drama { background: #7a5c8c; }
+    .card-type-strip.coming-of-age { background: var(--amber); }
+    .card-type-strip.feature { background: #3a6b5a; }
+
+    .card-body {
+      padding: 22px 22px 16px;
+      flex: 1;
+    }
+    .card-meta {
+      font-size: 10px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-faint);
+      margin-bottom: 10px;
     }
-
-    .screenplay-card__synopsis {
-      padding: 16px 26px;
-      font-size: 14px;
-      line-height: 1.8;
-      color: var(--ink-light);
-      border-bottom: 1px solid var(--divider);
-      background: rgba(44,36,22,0.015);
-    }
-
-    .screenplay-card__draft-badge {
-      background: var(--amber);
-      color: white;
-      font-family: 'Courier Prime', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      padding: 5px 12px;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-
-    .screenplay-card__content {
-      padding: 26px;
-      font-family: 'Courier Prime', monospace;
-      font-size: 13px;
-      line-height: 1.95;
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
       color: var(--ink);
-      white-space: pre-wrap;
-      min-height: 200px;
-      background: var(--parchment);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .card-synopsis {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--ink-light);
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    .screenplay-card__footer {
-      padding: 13px 26px;
+    .card-footer {
+      padding: 14px 22px;
       border-top: 1px solid var(--divider);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(44,36,22,0.025);
     }
-
-    .screenplay-card__stat {
-      font-size: 12px;
-      color: var(--ink-light);
+    .card-draft-badge {
       font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
     }
-
-    .draft-notes {
-      background: var(--amber-pale);
-      border-left: 3px solid var(--amber);
-      padding: 12px 18px;
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--ink-light);
-      margin: 0 26px 18px;
-      border-radius: 0 2px 2px 0;
-    }
-    .draft-notes strong {
+    .card-cta {
       font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--amber);
-      display: block;
-      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .card-cta i { font-size: 13px; }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,22,18,0.72);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
     }
 
-    /* filter bar */
-    .filter-bar {
+    .modal {
+      background: var(--paper);
+      border-radius: 4px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 88vh;
+      overflow-y: auto;
+      transform: translateY(16px);
+      transition: transform 0.25s;
       display: flex;
-      gap: 10px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
-    .filter-btn {
-      padding: 7px 16px;
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--divider);
+      padding: 22px 28px 18px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 1;
+    }
+    .modal-header-left { flex: 1; }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+    .modal-meta {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .modal-close {
+      width: 32px;
+      height: 32px;
       border: 1px solid var(--divider);
       border-radius: 2px;
       background: transparent;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-light);
       cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-light);
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: border-color 0.15s, color 0.15s;
     }
-    .filter-btn:hover,
-    .filter-btn.active {
+    .modal-close:hover { border-color: var(--amber); color: var(--amber); }
+
+    .modal-synopsis {
+      padding: 20px 28px;
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--ink-light);
+      border-bottom: 1px solid var(--divider);
+      background: var(--amber-pale);
+      border-left: 3px solid var(--amber);
+      margin: 0 28px 0;
+    }
+
+    .modal-section-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding: 20px 28px 10px;
+    }
+
+    .modal-script {
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      line-height: 2;
+      color: var(--ink);
+      white-space: pre-wrap;
+      padding: 0 28px 24px;
+      background: var(--parchment);
+      margin: 0 28px 20px;
+      border-radius: 2px;
+      border: 1px solid var(--divider);
+    }
+
+    .modal-notes {
+      margin: 0 28px 24px;
+      padding: 14px 18px;
+      background: var(--amber-pale);
+      border-left: 3px solid var(--amber);
+      border-radius: 0 2px 2px 0;
+    }
+    .modal-notes strong {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 5px;
+    }
+    .modal-notes p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-light);
+    }
+
+    .modal-footer {
+      position: sticky;
+      bottom: 0;
+      background: var(--paper);
+      border-top: 1px solid var(--divider);
+      padding: 16px 28px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 20px;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .btn-ghost {
+      border: 1px solid var(--divider);
+      background: transparent;
+      color: var(--ink-light);
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+    .btn-primary {
+      border: 1px solid var(--amber);
       background: var(--amber);
-      border-color: var(--amber);
-      color: white;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #a07020; border-color: #a07020; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer span {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--ink-light);
+    }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--amber); }
+
+    /* ── HIDDEN ── */
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .hero, .filters { padding-left: 20px; padding-right: 20px; }
+      .grid { padding: 32px 20px 60px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+      .modal-header, .modal-footer { padding: 16px 18px; }
+      .modal-synopsis, .modal-notes { margin: 0 18px 16px; }
+      .modal-script { margin: 0 18px 16px; }
+      .modal-section-label { padding: 16px 18px 8px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">Jack Dempsey</a>
-    <ul class="nav__links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="screenplays.html">Screenplays</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <button class="nav__hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<nav>
+  <a href="index.html" class="nav-logo">Jack Dempsey</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="screenplays.html">Screenplays</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </nav>
 
 <main>
-<div class="container">
-  <!-- PAGE HERO -->
-  <div class="page-hero">
-    <p class="eyebrow page-hero__eyebrow">The work</p>
-    <h1 class="page-hero__title">Screen<em>plays</em></h1>
-    <p class="page-hero__sub">Every script below shows its full journey, first draft to final. Drag the timeline to move between versions and see how each story develops.</p>
+  <div class="hero">
+    <p class="eyebrow">The work</p>
+    <h1>Screen<em>plays</em></h1>
+    <p>Click any script to read the synopsis, see an excerpt, and download the draft. Each one shows where it is in the process.</p>
   </div>
 
-  <!-- FILTERS -->
-  <div class="filter-bar" role="group" aria-label="Filter screenplays">
-    <button class="filter-btn active" onclick="filterScripts('all', this)">All</button>
-    <button class="filter-btn" onclick="filterScripts('feature', this)">Feature</button>
-    <button class="filter-btn" onclick="filterScripts('short', this)">Short</button>
-    <button class="filter-btn" onclick="filterScripts('drama', this)">Drama</button>
-    <button class="filter-btn" onclick="filterScripts('coming-of-age', this)">Coming of Age</button>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all', this)">All</button>
+    <button class="filter-btn" onclick="filter('coming-of-age', this)">Coming of age</button>
+    <button class="filter-btn" onclick="filter('drama', this)">Drama</button>
+    <button class="filter-btn" onclick="filter('short', this)">Short</button>
+    <button class="filter-btn" onclick="filter('feature', this)">Feature</button>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       SCREENPLAY 1 — The Ostritch
-  ═══════════════════════════════════════ -->
-  <article class="card screenplay-card" data-genre="coming-of-age" data-type="short">
-    <div class="screenplay-card__header">
-      <div>
-        <h2 class="screenplay-card__title">The Ostritch</h2>
-        <p class="screenplay-card__meta">Coming of age · Short · 1 current draft</p>
-      </div>
-      <span class="screenplay-card__draft-badge" id="badge-fog">Draft 1</span>
-    </div>
-
-    <p class="screenplay-card__synopsis">On the last day of school, Aaron, Elliot, Owen, and the rest of the group gather for one final summer party — not yet understanding it might be the last time everything feels this easy. As the night moves from a house party to the pier at sunset, news of Owen joining the army and Olivia leaving for London begins to land. A coming-of-age short about the moment before everything changes.</p>
-
-    <!-- FILMSTRIP TIMELINE -->
-    <div class="filmstrip-wrap">
-      <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
-      <div class="filmstrip-track">
-        <div class="filmstrip-hole"></div>
-        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-fog" style="width:0%"></div></div>
-        <div class="filmstrip-hole"></div>
-      </div>
-      <input type="range" class="draft-slider" id="slider-fog" min="1" max="1" value="1" step="1" aria-label="Select draft">
-      <div class="draft-nodes">
-        <div class="draft-node" role="button" tabindex="0" aria-label="Draft 1">
-          <div class="draft-node__dot is-active" id="dot-fog-1"></div>
-          <span class="draft-node__label">Draft 1</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="draft-notes" id="notes-fog">
-      <strong>Draft 1 — Jun 2026</strong>
-      First pass. Getting the story on paper. There is a clear start and finish however more needs to take place in the middle.
-    </div>
-
-    <div class="screenplay-card__content" id="content-fog">EXT. THE OUTSIDE OF A HOUSE AT THE END OF A CULDESAC - DAY
-
-AARON and ELLIOT walk into frame. Aaron talks
-on the phone holding a bottle of alcohol.
-Elliot holds a crate of beer.
-
-AARON
-Shut up man just get down here. You
-can't just spend the first day of
-summer moping around in your room.
-
-Aaron flashes an annoyed look at Elliot.
-
-AARON (CONT'D)
-Look, me and Elliot are already
-here. Don't worry Amelia's not
-coming.
-
-A pause. Aaron's expression shifts — happier.
-
-AARON (CONT'D)
-Alright man I'll see you soon.
-Just hurry up.
-
-Aaron turns to Elliot.
-
-AARON
-You ready to go in?
-
-ELLIOT
-We have something to do first.
-
-Elliot takes a joint out of his pocket.
-    </div>
-
-    <div class="screenplay-card__footer">
-      <span class="screenplay-card__stat" id="stat-fog">In progress · Jun 2026</span>
-      <div style="display:flex; gap:10px;">
-        <a href="pages/The Ostritch.pdf" class="btn btn--ghost" download="The Ostritch.pdf">
-          <i class="ti ti-download" aria-hidden="true"></i> Download draft
-        </a>
-        <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
-      </div>
-    </div>
-  </article>
-
-
-  <!-- ═══════════════════════════════════════
-       SCREENPLAY 2 — The Spiral
-  ═══════════════════════════════════════ -->
-  <article class="card screenplay-card" data-genre="drama" data-type="short">
-    <div class="screenplay-card__header">
-      <div>
-        <h2 class="screenplay-card__title">The Spiral</h2>
-        <p class="screenplay-card__meta">Drama · Short · 1 current draft</p>
-      </div>
-      <span class="screenplay-card__draft-badge" id="badge-spiral">Draft 1</span>
-    </div>
-
-    <p class="screenplay-card__synopsis">Katie ends things with Jack — she's proud of what he's doing but can't keep doing it alongside him. What follows is Jack unravelling in real time: the phone calls, the drinking, the bravado, the metro at night with a can in his hand. A short about the gap between holding it together and falling apart, and how quickly one becomes the other.</p>
-
-    <div class="filmstrip-wrap">
-      <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
-      <div class="filmstrip-track">
-        <div class="filmstrip-hole"></div>
-        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-spiral" style="width:0%"></div></div>
-        <div class="filmstrip-hole"></div>
-      </div>
-      <input type="range" class="draft-slider" id="slider-spiral" min="1" max="1" value="1" step="1" aria-label="Select draft">
-      <div class="draft-nodes">
-        <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot is-active" id="dot-spiral-1"></div>
-          <span class="draft-node__label">Draft 1</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="draft-notes" id="notes-spiral">
-      <strong>Draft 1 — Jun 2026</strong>
-      First pass. Jack's voice is loud and present — maybe too loud. The breakup scene is doing a lot of heavy lifting early on. The cuts between scenes are working well rhythmically; need to make sure they keep that energy through to the end.
-    </div>
-
-    <div class="screenplay-card__content" id="content-spiral">INT. JACK'S BEDROOM
-
-JACK and KATIE sit at the edge of the bed.
-
-KATIE
-I'm sorry. I'm proud of you for
-everything you're doing but I just
-can't go along with it anymore.
-
-JACK
-Get the fuck out then. Why are you
-still here.
-
-CUT.
-
-Jack is still sat at the edge of the bed.
-We hear a door slam downstairs.
-
-He looks at his phone. Throws it off the wall.
-
-JACK
-Fuck!
-
-CUT.
-
-Jack standing. On the phone now.
-
-JACK
-Yeah we broke up. Yes I'm fine.
-I'll be there in a minute —
-just make sure you bring it.
-
-He gets ready. Drinks as he does. Music blasting.
-
-JACK
-I'll show her what she's missing.
-
-CUT.
-
-EXT. STREET - NIGHT
-
-Jack walks to the metro station, can in hand.
-Two girls pass. He shouts something.
-They laugh and keep walking.
-
-JACK
-(to himself)
-They were ugly anyway.
-
-He crushes the can. Throws it at the wall.
-Laughs.
-    </div>
-
-    <div class="screenplay-card__footer">
-      <span class="screenplay-card__stat" id="stat-spiral">In progress · Jun 2026</span>
-      <div style="display:flex; gap:10px;">
-        <a href="pages/Spiral.pdf" class="btn btn--ghost" download="Spiral.pdf">
-          <i class="ti ti-download" aria-hidden="true"></i> Download draft
-        </a>
-        <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
-      </div>
-    </div>
-  </article>
-
-
-  <!-- ═══════════════════════════════════════
-       SCREENPLAY 3 — Ordinary Lives
-  ═══════════════════════════════════════ -->
-  <article class="card screenplay-card" data-genre="drama" data-type="feature">
-    <div class="screenplay-card__header">
-      <div>
-        <h2 class="screenplay-card__title">Ordinary Lives</h2>
-        <p class="screenplay-card__meta">Drama · TV Episode · 1 current draft</p>
-      </div>
-      <span class="screenplay-card__draft-badge" id="badge-ord">Draft 1</span>
-    </div>
-
-    <p class="screenplay-card__synopsis">Episode one opens on the morning of Elliot and Isobel's wedding — Aaron, Elliot, Owen, and Zach hungover in a hotel room with ninety minutes to get there. An ensemble drama about a group of friends who fear they're only going to see each other at moments like this one. Running through it: Aaron and Olivia, circling each other across every room they've ever been in together.</p>
-
-    <div class="filmstrip-wrap">
-      <p class="eyebrow" style="margin-bottom:12px;">Draft progression</p>
-      <div class="filmstrip-track">
-        <div class="filmstrip-hole"></div>
-        <div class="filmstrip-bar"><div class="filmstrip-bar__fill" id="fill-ord" style="width:0%"></div></div>
-        <div class="filmstrip-hole"></div>
-      </div>
-      <input type="range" class="draft-slider" id="slider-ord" min="1" max="1" value="1" step="1" aria-label="Select draft">
-      <div class="draft-nodes">
-        <div class="draft-node" role="button" tabindex="0">
-          <div class="draft-node__dot is-active" id="dot-ord-1"></div>
-          <span class="draft-node__label">Draft 1</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="draft-notes" id="notes-ord">
-      <strong>Draft 1 — Jun 2026</strong>
-      First pass. The hotel room opening works well — drops you straight in. Aaron and Olivia's dynamic is the engine of the episode; need to make sure it doesn't get lost in the ensemble. The pier ending landed well in the read-through.
-    </div>
-
-    <div class="screenplay-card__content" id="content-ord">INT. HOTEL ROOM - DAY
-
-AARON wakes up in a hotel bed. A woman he
-doesn't recognise is asleep next to him.
-He shrugs. Checks his phone.
-
-AARON
-Shit.
-
-He finds OWEN and ZACH passed out on the sofa.
-
-AARON (CONT'D)
-You guys need to wake up.
-
-ZACH
-What?
-
-AARON
-We have to be there in an hour
-and a half.
-
-They call ELLIOT. A phone buzzes from the
-bathroom. They find him passed out in the
-bathtub, the shower curtain pulled down.
-
-OWEN
-Found him.
-
-ZACH
-It stinks in here.
-
-AARON
-Elliot! Wake up. We're gonna be late.
-
-ELLIOT
-(confused)
-What time is it?
-
-AARON
-Ten.
-
-ELLIOT
-You're joking.
-
-AARON
-No man. Come on. Get ready.
-    </div>
-
-    <div class="screenplay-card__footer">
-      <span class="screenplay-card__stat" id="stat-ord">In progress · Jun 2026</span>
-      <div style="display:flex; gap:10px;">
-        <a href="pages/Ordinary Lives.pdf" class="btn btn--ghost" download="Ordinary Lives.pdf">
-          <i class="ti ti-download" aria-hidden="true"></i> Download draft
-        </a>
-        <button class="btn btn--outline" onclick="this.textContent='Coming soon'">Read in full</button>
-      </div>
-    </div>
-  </article>
-
-</div><!-- /container -->
+  <div class="grid" id="grid"></div>
 </main>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer__inner">
-    <span class="footer__name">Jack Dempsey — Filmmaker</span>
-    <ul class="footer__links">
-      <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
-      <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <p class="footer__copy">&copy; 2026 Jack Dempsey. All rights reserved.</p>
-  </div>
+<footer>
+  <span>Jack Dempsey — Filmmaker</span>
+  <ul class="footer-links">
+    <li><a href="https://vimeo.com/YOUR_VIMEO" target="_blank" rel="noopener">Vimeo</a></li>
+    <li><a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </footer>
 
-<script src="js/main.js"></script>
+<!-- MODAL -->
+<div class="modal-overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-meta" id="modal-meta"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">
+        <i class="ti ti-x"></i>
+      </button>
+    </div>
+    <div style="background:var(--amber-pale); border-left:3px solid var(--amber); margin: 20px 28px 0; padding:16px 18px; border-radius:0 2px 2px 0;">
+      <p style="font-size:13px; line-height:1.8; color:var(--ink-light);" id="modal-synopsis"></p>
+    </div>
+    <p class="modal-section-label">Opening excerpt</p>
+    <pre class="modal-script" id="modal-script"></pre>
+    <div class="modal-notes" id="modal-notes">
+      <strong id="notes-label"></strong>
+      <p id="notes-text"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Close</button>
+      <a class="btn btn-primary" id="modal-download" href="#" download>
+        <i class="ti ti-download"></i> Download draft
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ── Draft data ───────────────────────────────────────── */
-const fogDrafts = [
+const scripts = [
   {
-    label: 'Draft 1',
-    text: `EXT. THE OUTSIDE OF A HOUSE AT THE END OF A CULDESAC - DAY
+    id: 'ostritch',
+    title: 'The Ostritch',
+    genre: 'coming-of-age',
+    type: 'short',
+    meta: 'Coming of age · Short · Draft 1',
+    draft: 'Draft 1 — Jun 2026',
+    synopsis: 'On the last day of school, Aaron, Elliot, Owen, and the rest of the group gather for one final summer party — not yet understanding it might be the last time everything feels this easy. As the night moves from a house party to the pier at sunset, news of Owen joining the army and Olivia leaving for London begins to land. A coming-of-age short about the moment before everything changes.',
+    excerpt: `EXT. THE OUTSIDE OF A HOUSE AT THE END OF A CULDESAC - DAY
 
 AARON and ELLIOT walk into frame. Aaron talks
 on the phone holding a bottle of alcohol.
@@ -498,15 +537,19 @@ ELLIOT
 We have something to do first.
 
 Elliot takes a joint out of his pocket.`,
-    notes: '<strong>Draft 1 — Jun 2026</strong>\nFirst pass. Getting the story on paper. There is a clear start and finish however more needs to take place in the middle.',
-    pages: 'In progress', date: 'Jun 2026'
-  }
-];
-
-const spiralDrafts = [
+    notes: 'First pass. Getting the story on paper. There is a clear start and finish however more needs to take place in the middle.',
+    download: 'pages/The Ostritch.pdf',
+    status: 'In progress'
+  },
   {
-    label: 'Draft 1',
-    text: `INT. JACK'S BEDROOM
+    id: 'spiral',
+    title: 'The Spiral',
+    genre: 'drama',
+    type: 'short',
+    meta: 'Drama · Short · Draft 1',
+    draft: 'Draft 1 — Jun 2026',
+    synopsis: 'Katie ends things with Jack — she\'s proud of what he\'s doing but can\'t keep doing it alongside him. What follows is Jack unravelling in real time: the phone calls, the drinking, the bravado, the metro at night with a can in his hand. A short about the gap between holding it together and falling apart, and how quickly one becomes the other.',
+    excerpt: `INT. JACK'S BEDROOM
 
 JACK and KATIE sit at the edge of the bed.
 
@@ -541,31 +584,20 @@ just make sure you bring it.
 He gets ready. Drinks as he does. Music blasting.
 
 JACK
-I'll show her what she's missing.
-
-CUT.
-
-EXT. STREET - NIGHT
-
-Jack walks to the metro station, can in hand.
-Two girls pass. He shouts something.
-They laugh and keep walking.
-
-JACK
-(to himself)
-They were ugly anyway.
-
-He crushes the can. Throws it at the wall.
-Laughs.`,
-    notes: '<strong>Draft 1 — Jun 2026</strong>\nFirst pass. Jack\'s voice is loud and present — maybe too loud. The breakup scene is doing a lot of heavy lifting early on. The cuts between scenes are working well rhythmically; need to make sure they keep that energy through to the end.',
-    pages: 'In progress', date: 'Jun 2026'
-  }
-];
-
-const ordDrafts = [
+I'll show her what she's missing.`,
+    notes: 'First pass. Jack\'s voice is loud and present — maybe too loud. The breakup scene is doing a lot of heavy lifting early on. The cuts between scenes are working well rhythmically; need to make sure they keep that energy through to the end.',
+    download: 'pages/Spiral.pdf',
+    status: 'In progress'
+  },
   {
-    label: 'Draft 1',
-    text: `INT. HOTEL ROOM - DAY
+    id: 'ordinary',
+    title: 'Ordinary Lives',
+    genre: 'drama',
+    type: 'feature',
+    meta: 'Drama · TV Episode · Draft 1',
+    draft: 'Draft 1 — Jun 2026',
+    synopsis: 'Episode one opens on the morning of Elliot and Isobel\'s wedding — Aaron, Elliot, Owen, and Zach hungover in a hotel room with ninety minutes to get there. An ensemble drama about a group of friends who fear they\'re only going to see each other at moments like this one. Running through it: Aaron and Olivia, circling each other across every room they\'ve ever been in together.',
+    excerpt: `INT. HOTEL ROOM - DAY
 
 AARON wakes up in a hotel bed. A woman he
 doesn't recognise is asleep next to him.
@@ -611,56 +643,74 @@ You're joking.
 
 AARON
 No man. Come on. Get ready.`,
-    notes: '<strong>Draft 1 — Jun 2026</strong>\nFirst pass. The hotel room opening works well — drops you straight in. Aaron and Olivia\'s dynamic is the engine of the episode; need to make sure it doesn\'t get lost in the ensemble. The pier ending landed well in the read-through.',
-    pages: 'In progress', date: 'Jun 2026'
+    notes: 'First pass. The hotel room opening works well — drops you straight in. Aaron and Olivia\'s dynamic is the engine of the episode; need to make sure it doesn\'t get lost in the ensemble. The pier ending landed well in the read-through.',
+    download: 'pages/Ordinary Lives.pdf',
+    status: 'In progress'
   }
 ];
 
-/* ── Init all filmstrips ─────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  function initScript(key, drafts) {
-    initFilmstrip({
-      sliderId:  `slider-${key}`,
-      fillId:    `fill-${key}`,
-      badgeId:   `badge-${key}`,
-      statId:    `stat-${key}`,
-      contentId: `content-${key}`,
-      dotPrefix: `dot-${key}-`,
-      drafts: drafts.map(d => ({
-        label: d.label,
-        text:  d.text,
-        pages: d.pages,
-        date:  d.date
-      }))
-    });
+const genreStrips = {
+  'coming-of-age': 'coming-of-age',
+  'drama': 'drama',
+  'feature': 'feature'
+};
 
-    /* hook notes separately */
-    const slider = document.getElementById(`slider-${key}`);
-    const notes  = document.getElementById(`notes-${key}`);
-    if (slider && notes) {
-      slider.addEventListener('input', () => {
-        notes.innerHTML = drafts[parseInt(slider.value) - 1].notes;
-      });
-    }
-  }
+function buildGrid(items) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = items.map(s => `
+    <article class="script-card" data-genre="${s.genre}" data-type="${s.type}"
+      tabindex="0" role="button" aria-label="Open ${s.title}"
+      onclick="openModal('${s.id}')" onkeydown="if(event.key==='Enter')openModal('${s.id}')">
+      <div class="card-type-strip ${s.genre}"></div>
+      <div class="card-body">
+        <p class="card-meta">${s.meta}</p>
+        <h2 class="card-title">${s.title}</h2>
+        <p class="card-synopsis">${s.synopsis}</p>
+      </div>
+      <div class="card-footer">
+        <span class="card-draft-badge">${s.draft.split(' — ')[0]}</span>
+        <span class="card-cta"><i class="ti ti-eye" aria-hidden="true"></i> Preview</span>
+      </div>
+    </article>
+  `).join('');
+}
 
-  initScript('fog',    fogDrafts);
-  initScript('spiral', spiralDrafts);
-  initScript('ord',    ordDrafts);
-});
-
-/* ── Genre filter ────────────────────────────────────── */
-function filterScripts(filter, btn) {
+function filter(tag, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-
-  document.querySelectorAll('.screenplay-card').forEach(card => {
-    const genre = card.dataset.genre;
-    const type  = card.dataset.type;
-    const show  = filter === 'all' || filter === genre || filter === type;
-    card.style.display = show ? '' : 'none';
-  });
+  const filtered = tag === 'all' ? scripts : scripts.filter(s => s.genre === tag || s.type === tag);
+  buildGrid(filtered);
 }
+
+function openModal(id) {
+  const s = scripts.find(x => x.id === id);
+  if (!s) return;
+  document.getElementById('modal-title').textContent = s.title;
+  document.getElementById('modal-meta').textContent = s.meta + ' · ' + s.status;
+  document.getElementById('modal-synopsis').textContent = s.synopsis;
+  document.getElementById('modal-script').textContent = s.excerpt;
+  document.getElementById('notes-label').textContent = s.draft;
+  document.getElementById('notes-text').textContent = s.notes;
+  document.getElementById('modal-download').href = s.download;
+  document.getElementById('modal-download').setAttribute('download', s.title + '.pdf');
+  const overlay = document.getElementById('overlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('overlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+buildGrid(scripts);
 </script>
 </body>
 </html>
